@@ -1,0 +1,148 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="Header.master.cs" Inherits="Dsms.Header" %>
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+   <meta charset="UTF-8">
+   <meta http-equiv="X-UA-Compatible" content="IE=edge">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>Patel's Dryfruit and Masala</title>
+
+   <!-- font awesome cdn link  -->
+   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+
+   <link rel="stylesheet" href="https://unpkg.com/swiper@7/swiper-bundle.min.css" />
+
+   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/lightgallery-js/1.4.0/css/lightgallery.min.css">
+
+   <!-- custom css file link  -->
+   <link rel="stylesheet" href="css/style.css">
+
+   <link rel="shortcut icon" type="x-icon" href="images\icon.ico">
+
+    <asp:ContentPlaceHolder ID="head" runat="server"></asp:ContentPlaceHolder>
+</head>
+
+<body>
+
+   <!-- header section starts     -->
+
+   <section class="header">
+
+      <img src="images\logo.png" class="logo">
+
+      <nav class="navbar">
+         <a href="index.aspx">home</a>
+         <a href="Product.aspx">shop</a>
+         <a href="gallery.aspx">gallery</a>
+         <a href="index.aspx#about">about</a>
+         <a href="index.aspx#food">expertise</a>
+         <a href="index.aspx#blogs">reviews</a>
+         <a href="index.aspx#footer">Contact us</a>
+         <?php
+         if ($loggedin == true) {
+         ?>
+            <a href="profile.aspx"><?php echo ($_SESSION['loguname']); ?></a>;
+         <?php
+         } else {
+         ?>
+            <a href="Signin.aspx">Login</a>;
+         <?php
+         }
+         ?>
+         <a href="cart.aspx">Cart</a>
+         <?php
+         if ($loggedin == true) { ?>
+            <a href="logout.aspx">Log out</a>
+         <?php }
+         ?>
+      </nav>
+
+       <div id="menu-btn" class="fas fa-bars"></div>
+
+   </section>
+
+   <!-- header section ends    -->
+
+   <!-- blogs section ends -->
+    <section>
+    <asp:ContentPlaceHolder ID="ContentPlaceholder1" runat="server">
+
+    </asp:ContentPlaceHolder>
+    </section>
+   <!-- footer section starts  -->
+
+   <section class="footer" id="footer">
+
+      <div class="icons-container">
+
+         <div class="icons">
+            <i class="fas fa-clock"></i>
+            <h3>opening hours</h3>
+            <p>09:00am to 08:00pm</p>
+         </div>
+
+         <div class="icons">
+            <i class="fas fa-phone"></i>
+            <h3>phone</h3>
+            <p>Kevin Patel - 9898219837</p>
+            <p>Meet Patel - 9998513182</p>
+         </div>
+
+         <div class="icons">
+            <i class="fas fa-envelope"></i>
+            <h3>email</h3>
+            <p>patelsdryfruitstudio@gmail.com</p>
+         </div>
+
+         <div class="icons">
+            <i class="fas fa-map"></i>
+            <h3>address</h3>
+            <p>4-5,Regent Residency,Opp. Pratham Ganesha Apt., Nr. Pratham Circle,Pal-Adajan,Surat - 395009</p>
+         </div>
+
+      </div>
+
+      <div class="share">
+         <a href="https://www.facebook.com/patelcashewnut" class="fab fa-facebook-f"></a>
+         <a href="#" class="fab fa-twitter"></a>
+         <a href="https://www.instagram.com/patels.cashew.nuts/" class="fab fa-instagram"></a>
+      </div>
+
+      <div class="qr">
+         <br>
+         <br>
+         <h2>Scan to get all the information!</h2>
+         <img src="images\qrcode.png" style="width: 200px;">
+      </div>
+
+      <div class="credit"> created by <span>Pratham Patel, Rohan Vaghasiya</span> | all rights reserved! </div>
+
+   </section>
+
+   <!-- footer section ends  -->
+
+
+
+
+
+
+
+
+
+
+   <script src="https://unpkg.com/swiper@7/swiper-bundle.min.js"></script>
+
+   <script src="https://cdnjs.cloudflare.com/ajax/libs/lightgallery-js/1.4.0/js/lightgallery.min.js"></script>
+
+   <!-- custom js file link  -->
+   <script src="Js/script.js"></script>
+
+   <script>
+       lightGallery(document.querySelector('.gallery .gallery-container'));
+   </script>
+
+</body>
+
+</html>
