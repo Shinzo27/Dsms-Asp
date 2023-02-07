@@ -40,23 +40,10 @@
          <a href="index.aspx#food">expertise</a>
          <a href="index.aspx#blogs">reviews</a>
          <a href="index.aspx#footer">Contact us</a>
-         <?php
-         if ($loggedin == true) {
-         ?>
-            <a href="profile.aspx"><?php echo ($_SESSION['loguname']); ?></a>;
-         <?php
-         } else {
-         ?>
-            <a href="Signin.aspx">Login</a>;
-         <?php
-         }
-         ?>
+         <a href="profile.aspx">Profile</a>;
+         <a href="Signin.aspx">Login</a>
          <a href="cart.aspx">Cart</a>
-         <?php
-         if ($loggedin == true) { ?>
-            <a href="logout.aspx">Log out</a>
-         <?php }
-         ?>
+         <a href="logout.aspx">Log out</a>
       </nav>
 
        <div id="menu-btn" class="fas fa-bars"></div>
@@ -66,60 +53,11 @@
    <!-- header section ends    -->
 
    <!-- blogs section ends -->
-    <section>
+    
     <asp:ContentPlaceHolder ID="ContentPlaceholder1" runat="server">
 
     </asp:ContentPlaceHolder>
-    </section>
-   <!-- footer section starts  -->
-
-   <section class="footer" id="footer">
-
-      <div class="icons-container">
-
-         <div class="icons">
-            <i class="fas fa-clock"></i>
-            <h3>opening hours</h3>
-            <p>09:00am to 08:00pm</p>
-         </div>
-
-         <div class="icons">
-            <i class="fas fa-phone"></i>
-            <h3>phone</h3>
-            <p>Kevin Patel - 9898219837</p>
-            <p>Meet Patel - 9998513182</p>
-         </div>
-
-         <div class="icons">
-            <i class="fas fa-envelope"></i>
-            <h3>email</h3>
-            <p>patelsdryfruitstudio@gmail.com</p>
-         </div>
-
-         <div class="icons">
-            <i class="fas fa-map"></i>
-            <h3>address</h3>
-            <p>4-5,Regent Residency,Opp. Pratham Ganesha Apt., Nr. Pratham Circle,Pal-Adajan,Surat - 395009</p>
-         </div>
-
-      </div>
-
-      <div class="share">
-         <a href="https://www.facebook.com/patelcashewnut" class="fab fa-facebook-f"></a>
-         <a href="#" class="fab fa-twitter"></a>
-         <a href="https://www.instagram.com/patels.cashew.nuts/" class="fab fa-instagram"></a>
-      </div>
-
-      <div class="qr">
-         <br>
-         <br>
-         <h2>Scan to get all the information!</h2>
-         <img src="images\qrcode.png" style="width: 200px;">
-      </div>
-
-      <div class="credit"> created by <span>Pratham Patel, Rohan Vaghasiya</span> | all rights reserved! </div>
-
-   </section>
+    
 
    <!-- footer section ends  -->
 

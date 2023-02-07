@@ -1,11 +1,7 @@
-﻿<%@ Page Language="C#" MasterPageFile="~/Header.Master" AutoEventWireup="true" CodeBehind="Home.aspx.cs" Inherits="Dsms.WebForm1" %>
-
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Header.Master" AutoEventWireup="true" CodeBehind="index.aspx.cs" Inherits="Dsms.WebForm2" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
-
 </asp:Content>
-
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceholder1" runat="server">
-
     <section class="home" id="home">
 
       <div class="swiper home-slider">
@@ -260,5 +256,54 @@
 
    </section>
 
-   <!-- blogs section ends -->
+    </section>
+   <!-- footer section starts  -->
+
+   <section class="footer" id="footer">
+
+      <div class="icons-container">
+
+         <div class="icons">
+            <i class="fas fa-clock"></i>
+            <h3>opening hours</h3>
+            <p>09:00am to 08:00pm</p>
+         </div>
+
+         <div class="icons">
+            <i class="fas fa-phone"></i>
+            <h3>phone</h3>
+            <p>Kevin Patel - 9898219837</p>
+            <p>Meet Patel - 9998513182</p>
+         </div>
+
+         <div class="icons">
+            <i class="fas fa-envelope"></i>
+            <h3>email</h3>
+            <p>patelsdryfruitstudio@gmail.com</p>
+         </div>
+
+         <div class="icons">
+            <i class="fas fa-map"></i>
+            <h3>address</h3>
+            <p>4-5,Regent Residency,Opp. Pratham Ganesha Apt., Nr. Pratham Circle,Pal-Adajan,Surat - 395009</p>
+         </div>
+
+      </div>
+
+      <div class="share">
+         <a href="https://www.facebook.com/patelcashewnut" class="fab fa-facebook-f"></a>
+         <a href="#" class="fab fa-twitter"></a>
+         <a href="https://www.instagram.com/patels.cashew.nuts/" class="fab fa-instagram"></a>
+      </div>
+
+      <div class="qr">
+         <br>
+         <br>
+         <h2>Scan to get all the information!</h2>
+         <img src="images\qrcode.png" style="width: 200px;">
+      </div>
+
+      <div class="credit"> created by <span>Pratham Patel, Rohan Vaghasiya</span> | all rights reserved! </div>
+
+   </section>
 </asp:Content>
