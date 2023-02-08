@@ -25,7 +25,7 @@
 </head>
 
 <body>
-
+    <form id="form1" runat="server">
    <!-- header section starts     -->
 
    <section class="header">
@@ -41,7 +41,7 @@
          <a href="index.aspx#blogs">reviews</a>
          <a href="index.aspx#footer">Contact us</a>
          <a href="profile.aspx">Profile</a>;
-         <a href="Signin.aspx">Login</a>
+         <a href="login.aspx">Login</a>
          <a href="cart.aspx">Cart</a>
          <a href="logout.aspx">Log out</a>
       </nav>
@@ -80,7 +80,7 @@
    <script>
        lightGallery(document.querySelector('.gallery .gallery-container'));
    </script>
-
+   </form>
 </body>
 
 </html>
