@@ -18,9 +18,10 @@
 
    <!-- custom css file link  -->
    <link rel="stylesheet" href="css/style.css">
-
+    
    <link rel="shortcut icon" type="x-icon" href="images\icon.ico">
-
+    <!--Sweet Alert -->
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
     <asp:ContentPlaceHolder ID="head" runat="server"></asp:ContentPlaceHolder>
 </head>
 
@@ -33,17 +34,17 @@
       <img src="images\logo.png" class="logo">
 
       <nav class="navbar">
-         <a href="index.aspx">home</a>
-         <a href="Product.aspx">shop</a>
-         <a href="gallery.aspx">gallery</a>
-         <a href="index.aspx#about">about</a>
-         <a href="index.aspx#food">expertise</a>
-         <a href="index.aspx#blogs">reviews</a>
-         <a href="index.aspx#footer">Contact us</a>
-         <a href="profile.aspx">Profile</a>;
-         <a href="login.aspx">Login</a>
-         <a href="cart.aspx">Cart</a>
-         <a href="logout.aspx">Log out</a>
+          <asp:LinkButton ID="btnHome" runat="server" OnClick="btnHome_Click">Home</asp:LinkButton>
+          <asp:LinkButton ID="btnShop" runat="server" OnClick="btnShop_Click">Shop</asp:LinkButton>
+          <asp:LinkButton ID="btnGallery" runat="server" OnClick="btnGallery_Click">Gallery</asp:LinkButton>
+          <asp:LinkButton ID="btnAbout" runat="server" OnClick="btnAbout_Click">About</asp:LinkButton>
+          <asp:LinkButton ID="btnExpertise" runat="server" OnClick="btnExpertise_Click">Expertise</asp:LinkButton>
+          <asp:LinkButton ID="btnReviews" runat="server" OnClick="btnReviews_Click">Reviews</asp:LinkButton>
+          <asp:LinkButton ID="btnContactus" runat="server" OnClick="btnContactus_Click">Contact Us</asp:LinkButton>
+          <asp:LinkButton ID="btnProfile" runat="server" OnClick="btnProfile_Click">Profile</asp:LinkButton>
+          <asp:LinkButton ID="btnLogin" runat="server" OnClick="btnLogin_Click">Login</asp:LinkButton>
+          <asp:LinkButton ID="btnCart" runat="server" OnClick="btnCart_Click">Cart</asp:LinkButton>
+          <asp:LinkButton ID="btnLogout" runat="server" OnClick="btnLogout_Click">Log Out</asp:LinkButton>
       </nav>
 
        <div id="menu-btn" class="fas fa-bars"></div>
@@ -60,15 +61,6 @@
     
 
    <!-- footer section ends  -->
-
-
-
-
-
-
-
-
-
 
    <script src="https://unpkg.com/swiper@7/swiper-bundle.min.js"></script>
 

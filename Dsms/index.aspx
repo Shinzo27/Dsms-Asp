@@ -256,7 +256,6 @@
 
    </section>
 
-    </section>
    <!-- footer section starts  -->
 
    <section class="footer" id="footer">

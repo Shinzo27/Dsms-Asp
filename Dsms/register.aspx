@@ -3,7 +3,7 @@
     <link href="Css/loginstyle.css" rel="stylesheet" />
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceholder1" runat="server">
-<section class="w3l-mockup-form">
+    <section class="w3l-mockup-form">
         <div class="container">
             <!-- /form -->
             <div class="workinghny-form-grid">
@@ -17,12 +17,12 @@
                         <h2>Register Now</h2>
                         <p>Join Us In This Journey By Being A Part Of It! </p>
                             <asp:TextBox ID="txtUsername" runat="server" CssClass="inputBox" placeholder="Enter Your Username" Width="300px"></asp:TextBox>
-                            <asp:TextBox ID="txtEmail" runat="server" CssClass="inputBox" placeholder="Enter Your Email" Width="300px"></asp:TextBox>
+                            <asp:TextBox ID="txtEmail" runat="server" CssClass="inputBox" placeholder="Enter Your Email" Width="300px" TextMode="Email"></asp:TextBox>
                             <asp:TextBox ID="txtPassword" runat="server" CssClass="inputBox" placeholder="Enter Your Password" Width="300px" TextMode="Password"></asp:TextBox>
                             <br/>
-                            <asp:Button ID="btnRegister" runat="server" BackColor="RoyalBlue" CssClass="btn" Font-Bold="True" Font-Size="Large" ForeColor="White" Text="Get Otp" />
+                            <asp:Button ID="btnOtp" runat="server" BackColor="RoyalBlue" CssClass="btn" Font-Bold="True" Font-Size="Large" ForeColor="White" OnClick="btnOtp_Click" Text="Get Otp" />
                             <asp:TextBox ID="txtOtp" runat="server" CssClass="inputBox" placeholder="Enter Otp" Width="300px"></asp:TextBox>
-                            <asp:Button ID="Button1" runat="server" BackColor="RoyalBlue" CssClass="btn" Font-Bold="True" Font-Size="Large" ForeColor="White" Text="Register" />
+                            <asp:Button ID="btnRegister" runat="server" BackColor="RoyalBlue" CssClass="btn" Font-Bold="True" Font-Size="Large" ForeColor="White" OnClick="btnRegister_Click" Text="Register" />
                         <div class="social-icons">
                             <p>Have an account! <a href="login.aspx">Login</a>.</p>
                         </div>
