@@ -28,7 +28,7 @@
                               <input class="btn" type="submit" name="addtocart" value="Add To Cart">
                            <br>
                         </div>
-                        <div class="img"><img src="images/cashew.jpg" style="float: right; width: 100px; height: 100px;" required>
+                        <div class="img"><img src="images/cashew.jpg" style="float: right; width: 100px; height: 100px;" >
                         </div>
                         <div class="price">₹750/1kg</div>
                     </div>
@@ -58,16 +58,13 @@
                         <div class="info">
                            <h3><?php echo $row['pname']; ?></h3>
                            <br>
-                           <form method="post">
-                              <input type="hidden" name="pid" value="<?php echo $row['pid']; ?>">
-                              <input type="hidden" name="pname" value="<?php echo $row['pname']; ?>">
-                              <input type="hidden" name="price" value="<?php echo ($row['price'] / 4); ?>">
+                           
                               <input type="text" size="8" name="quantity" placeholder="quantity" style="height: 45px; font-size: 18px;" required>
                               <select name="weight" style="width: 70px; height: 28px; font-size: 15px;" required>
                                  <option value="250gm">250gms</option>
                               </select><br><br>
                               <input class="btn" type="submit" name="addtocart" value="Add To Cart">
-                           </form>
+
                            <br>
                         </div>
                         <div class="img"><img src="admin/<?php echo $row['pimage'] ?>" style="float: right; width: 100px; height: 100px;">
@@ -97,16 +94,11 @@
                         <div class="info">
                            <h3><?php echo $row['pname']; ?></h3>
                            <br>
-                           <form method="post">
-                              <input type="hidden" name="pid" value="<?php echo $row['pid']; ?>">
-                              <input type="hidden" name="pname" value="<?php echo $row['pname']; ?>">
-                              <input type="hidden" name="price" value="<?php echo $row['price']; ?>">
                               <input type="text" size="8" name="quantity" placeholder="quantity" style="height: 45px; font-size: 18px;" required>
                               <select name="weight" style="width: 70px; height: 28px; font-size: 15px;" required>
                                  <option value="pkt">pkt</option>
                               </select><br><br>
                               <input class="btn" type="submit" name="addtocart" value="Add To Cart">
-                           </form>
                         </div>
                         <div class="img"><img src="admin/<?php echo $row['pimage'] ?>" style="float: right; width: 100px; height: 100px;">
                         </div>
@@ -139,7 +131,7 @@
                         <div class="info">
                            <h3><?php echo $row['pname']; ?></h3>
                            <br>
-                           <form method="post">
+                           
                               <input type="hidden" name="pid" value="<?php echo $row['pid']; ?>">
                               <input type="hidden" name="pname" value="<?php echo $row['pname']; ?>">
                               <input type="hidden" name="price" value="<?php echo $row['price']; ?>">
@@ -148,7 +140,7 @@
                                  <option value="pkt">pkt</option>
                               </select><br><br>
                               <input class="btn" type="submit" name="addtocart" value="Add To Cart">
-                           </form>
+                           
                         </div>
                         <div class="img"><img src="admin/<?php echo $row['pimage'] ?>" style="float: right; width: 80px; height: 90px;">
                         </div>
@@ -178,16 +170,12 @@
                         <div class="info">
                            <h3><?php echo $row['pname']; ?></h3>
                            <br>
-                           <form method="post">
-                              <input type="hidden" name="pid" value="<?php echo $row['pid']; ?>">
-                              <input type="hidden" name="pname" value="<?php echo $row['pname']; ?>">
-                              <input type="hidden" name="price" value="<?php echo $row['price']; ?>">
                               <input type="text" size="8" name="quantity" placeholder="quantity" style="height: 45px; font-size: 18px;" required>
                               <select name="weight" style="width: 70px; height: 28px; font-size: 15px;" required>
                                  <option value="bottle">bottle</option>
                               </select><br><br>
                               <input class="btn" type="submit" name="addtocart" value="Add To Cart">
-                           </form>
+
                         </div>
                         <div class="img"><img src="admin/<?php echo $row['pimage'] ?>" style="float: right; width: 100px; height: 100px;">
                         </div>
@@ -200,16 +188,7 @@
          </div>
       </div>
    </section>
-   </div>
-   </div>
 
-   </div>
-
-   <div class="swiper-pagination"></div>
-
-   </div>
-
-   </section> -->
 
    <!-- menu section ends -->
 
