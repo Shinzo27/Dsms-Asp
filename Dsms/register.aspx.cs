@@ -7,15 +7,18 @@ using System.Web.UI.WebControls;
 using System.Data.SqlClient;
 using System.Net;
 using System.Net.Mail;
+using System.Configuration;
 
 namespace Dsms
 {
     public partial class WebForm3 : System.Web.UI.Page
     {
-        SqlConnection con = new SqlConnection("Data Source=SHINZO\\SQLEXPRESS;Initial Catalog=dbDsms;Integrated Security=True");
+        SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["dbconnection"].ConnectionString);
         static int sendOtp = 0;
         protected void Page_Load(object sender, EventArgs e)
         {
+            txtPassword.Enabled = false;
+            txtOtp.Enabled = false;
             if (IsPostBack)
             {
                 if(ViewState["username"] != null)
@@ -26,10 +29,7 @@ namespace Dsms
                 {
                     txtEmail.Text = ViewState["email"].ToString();
                 }
-                if (ViewState["password"] != null)
-                {
-                    txtPassword.Text = ViewState["password"].ToString();
-                }
+               
             }
         }
 
@@ -57,15 +57,8 @@ namespace Dsms
                 }
                 else
                 {
-                    if (txtPassword.Text.Length < 6)
-                    {
-                        ScriptManager.RegisterStartupScript(this, this.GetType(), "k", "swal('Error!', 'Password Must be greater than 6 character!', 'error');", true);
-                    }
-                    else
-                    {
                             ViewState["username"] = txtUsername.Text;
                             ViewState["email"] = txtEmail.Text;
-                            ViewState["password"] = txtPassword.Text;
                             Random random = new Random();
                             sendOtp = random.Next(1000, 9999);
                             reader.Close();
@@ -88,21 +81,39 @@ namespace Dsms
                             SMTP.EnableSsl = true;
                             SMTP.Send(mm);
                             ScriptManager.RegisterStartupScript(this, this.GetType(), "k", "swal('Check Email!', 'Your OTP is sent to your email!', 'success');", true);
-                    }
+                            txtOtp.Enabled = true;
+                            txtPassword.Enabled = true;
+
                 }
             }
         }
 
         protected void btnRegister_Click(object sender, EventArgs e)
         {
-            if(sendOtp == Convert.ToInt32(txtOtp.Text))
+            if (!IsPostBack)
             {
-                con.Open();
-                string query = "insert into tblUser(username,email,password,role,date) values ('" + txtUsername.Text + "','" + txtEmail.Text + "','" + txtPassword.Text + "','customer',GETDATE())";
-                SqlCommand com = new SqlCommand(query, con);
-                com.ExecuteNonQuery();
-                ScriptManager.RegisterStartupScript(this, this.GetType(), "k", "swal('Success!', 'Registered Successfully!', 'success').then(function() {window.location.href = 'login.aspx'}); ", true);
-                con.Close();
+
+
+                if (sendOtp == Convert.ToInt32(txtOtp.Text))
+                {
+                    if (txtPassword.Text.Length < 6)
+                    {
+                        ScriptManager.RegisterStartupScript(this, this.GetType(), "k", "swal('Error!', 'Password Must be greater than 6 character!', 'error');", true);
+                    }
+                    else
+                    {
+                        con.Open();
+                        string query = "insert into tblUser(username,email,password,role,date) values ('" + txtUsername.Text + "','" + txtEmail.Text + "','" + txtPassword.Text + "','customer',GETDATE())";
+                        SqlCommand com = new SqlCommand(query, con);
+                        com.ExecuteNonQuery();
+                        ScriptManager.RegisterStartupScript(this, this.GetType(), "k", "swal('Success!', 'Registered Successfully!', 'success').then(function() {window.location.href = 'login.aspx'}); ", true);
+                        con.Close();
+                    }
+                }
+            }
+            else
+            {
+                Response.Redirect("login.aspx");
             }
         }
     }

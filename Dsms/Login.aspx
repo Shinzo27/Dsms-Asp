@@ -20,7 +20,7 @@
                         <br />
                             <asp:TextBox ID="txtEmail" runat="server" class="email" CssClass="inputBox" placeholder="Enter your Email" style="margin-top: 5px;" Width="300px"></asp:TextBox>
                             <asp:TextBox ID="txtPassword" runat="server" class="passowrd" CssClass="inputBox" placeholder="Enter your Password" TextMode="Password" Width="300px" ></asp:TextBox>
-                            <p><a href="forgetpassword.php" style="margin-bottom: 15px; display: block; text-align: right;">Forgot Password?</a></p>
+                            <p><a href="forgetpassword.aspx" style="margin-bottom: 15px; display: block; text-align: right;">Forgot Password?</a></p>
                             <asp:Button ID="Button1" runat="server" CssClass="btn" Text="Login" BackColor="#0043A2" Font-Bold="True" Font-Size="Large" Font-Strikeout="False" ForeColor="White" OnClick="Button1_Click"/>
                             <div class="social-icons">
                             <p>Create Account! <a href="register.aspx">Register</a>.</p>
