@@ -14,19 +14,26 @@ namespace Dsms
         SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["dbconnection"].ConnectionString);
         protected void Page_Load(object sender, EventArgs e)
         {
-            string username = Session["username"].ToString();
-            con.Open();
-            string query = "select * from tblUser where username= '"+username+"'";
-            SqlCommand com = new SqlCommand(query, con);
-            SqlDataReader dr = com.ExecuteReader();
-
-            if (dr.Read() == true)
+            if (Session["username"] != null)
             {
-                txtemail.Text = dr.GetString(2);
-                txtuname.Text = dr.GetString(1);
-                txtdate.Text = dr.GetDateTime(5).ToString();
+                string username = Session["username"].ToString();
+                con.Open();
+                string query = "select * from tblUser where username= '" + username + "'";
+                SqlCommand com = new SqlCommand(query, con);
+                SqlDataReader dr = com.ExecuteReader();
+
+                if (dr.Read() == true)
+                {
+                    txtemail.Text = dr.GetString(2);
+                    txtuname.Text = dr.GetString(1);
+                    txtdate.Text = dr.GetDateTime(5).ToString();
+                }
+                dr.Close();
             }
-            dr.Close();
+            else
+            {
+                Response.Redirect("login.aspx");
+            }
         }
         protected void Button1_Click(object sender, EventArgs e)
         {
@@ -41,14 +48,15 @@ namespace Dsms
                     if (txtNewpass.Text.Length > 6)
                     {
                         dr.Close();
-                        string pass = "update tblUser set password='" + txtNewpass.Text + "' where username='" + username + "'";
-                        SqlCommand result = new SqlCommand(query, con);
-                        SqlDataReader reader = result.ExecuteReader();
-                        if (reader.Read() == true)
-                        {
-                            ScriptManager.RegisterStartupScript(this, this.GetType(), "k", "swal('Success!', 'Password Updated Successfully!', 'success');", true);
-                        }
-                    }   
+                        string pass = "update tblUser set password='"+txtNewpass.Text+"' where username='"+txtuname.Text+"'";
+                        SqlCommand result = new SqlCommand(pass, con);
+                        result.ExecuteNonQuery();
+                        ScriptManager.RegisterStartupScript(this, this.GetType(), "k", "swal('Success!', 'Password Updated Successfully!', 'success');", true);
+                    }
+                    else
+                    {
+                        ScriptManager.RegisterStartupScript(this, this.GetType(), "k", "swal('Error!', 'Password Must Be Greater Than 6 Characters!', 'error');", true);
+                    }
                 }
                 else
                 {

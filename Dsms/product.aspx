@@ -17,7 +17,7 @@
                </div>
                <br>
                <div class="box-container">
-                    <div class="box">
+                    <%--<%--<div class="box">
                         <div class="info">
                            <h3>Cashew</h3>
                            <br>
@@ -31,7 +31,36 @@
                         <div class="img"><img src="images/cashew.jpg" style="float: right; width: 100px; height: 100px;" >
                         </div>
                         <div class="price">₹750/1kg</div>
-                    </div>
+                    </div>--%>
+                   <asp:DataList ID="DataList1" runat="server" DataKeyField="pid" DataSourceID="SqlDataSource1">
+                       <ItemTemplate>
+                           pid:
+                           <asp:Label ID="pidLabel" runat="server" Text='<%# Eval("pid") %>' />
+                           <br />
+                           pname:
+                           <asp:Label ID="pnameLabel" runat="server" Text='<%# Eval("pname") %>' />
+                           <br />
+                           category:
+                           <asp:Label ID="categoryLabel" runat="server" Text='<%# Eval("category") %>' />
+                           <br />
+                           image:
+                           <asp:Label ID="imageLabel" runat="server" Text='<%# Eval("image") %>' />
+                           <br />
+                           price:
+                           <asp:Label ID="priceLabel" runat="server" Text='<%# Eval("price") %>' />
+                           <br />
+                           date:
+                           <asp:Label ID="dateLabel" runat="server" Text='<%# Eval("date") %>' />
+                           <br />
+<br />
+                       </ItemTemplate>
+
+                   </asp:DataList>
+                    <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:dbDsmsConnectionString %>" SelectCommand="SELECT * FROM [tblProduct] WHERE ([category] = @category)">
+                        <SelectParameters>
+                            <asp:Parameter DefaultValue="dryfruit" Name="category" Type="String" />
+                        </SelectParameters>
+                    </asp:SqlDataSource>
                </div>
             </div>
          </div>
@@ -48,30 +77,7 @@
                </div>
                <br>
                <div class="box-container">
-                  <?php
-                  include 'partials/datacon.php';
-                  $query = "select * from tblProduct where category='driedfruit'";
-                  $result = mysqli_query($conn, $query);
-                  while ($row = mysqli_fetch_assoc($result)) :
-                  ?>
-                     <div class="box">
-                        <div class="info">
-                           <h3><?php echo $row['pname']; ?></h3>
-                           <br>
-                           
-                              <input type="text" size="8" name="quantity" placeholder="quantity" style="height: 45px; font-size: 18px;" required>
-                              <select name="weight" style="width: 70px; height: 28px; font-size: 15px;" required>
-                                 <option value="250gm">250gms</option>
-                              </select><br><br>
-                              <input class="btn" type="submit" name="addtocart" value="Add To Cart">
-
-                           <br>
-                        </div>
-                        <div class="img"><img src="admin/<?php echo $row['pimage'] ?>" style="float: right; width: 100px; height: 100px;">
-                        </div>
-                        <div class="price">₹<?php echo $row['price'] / 4; ?>/250gm</div>
-                     </div>
-                  <?php endwhile; ?>
+                  
                </div>
             </div>
          </div>
@@ -84,27 +90,7 @@
             <div class="swiper-slide slide">
                <h3 class="title">Namkeens</h3>
                <div class="box-container">
-                  <?php
-                  include 'partials/datacon.php';
-                  $query = "select * from tblProduct where category='namkeen'";
-                  $result = mysqli_query($conn, $query);
-                  while ($row = mysqli_fetch_assoc($result)) :
-                  ?>
-                     <div class="box">
-                        <div class="info">
-                           <h3><?php echo $row['pname']; ?></h3>
-                           <br>
-                              <input type="text" size="8" name="quantity" placeholder="quantity" style="height: 45px; font-size: 18px;" required>
-                              <select name="weight" style="width: 70px; height: 28px; font-size: 15px;" required>
-                                 <option value="pkt">pkt</option>
-                              </select><br><br>
-                              <input class="btn" type="submit" name="addtocart" value="Add To Cart">
-                        </div>
-                        <div class="img"><img src="admin/<?php echo $row['pimage'] ?>" style="float: right; width: 100px; height: 100px;">
-                        </div>
-                        <div class="price">₹<?php echo $row['price']; ?>/pkt</div>
-                     </div>
-                  <?php endwhile; ?>
+                     
                </div>
             </div>
          </div>
@@ -116,38 +102,9 @@
          <div class="swiper-wrapper">
             <div class="swiper-slide slide">
                <h3 class="title">Masala</h3>
-               <div class="alert alert-warning" style="font-size: 15px;" role="alert">
-                  We have all masala of bharat masala that is known in whole surat!
-               </div>
                <br>
                <div class="box-container">
-                  <?php
-                  include 'partials/datacon.php';
-                  $query = "select * from tblProduct where category='masala'";
-                  $result = mysqli_query($conn, $query);
-                  while ($row = mysqli_fetch_assoc($result)) :
-                  ?>
-                     <div class="box">
-                        <div class="info">
-                           <h3><?php echo $row['pname']; ?></h3>
-                           <br>
-                           
-                              <input type="hidden" name="pid" value="<?php echo $row['pid']; ?>">
-                              <input type="hidden" name="pname" value="<?php echo $row['pname']; ?>">
-                              <input type="hidden" name="price" value="<?php echo $row['price']; ?>">
-                              <input type="text" size="8" name="quantity" placeholder="quantity" style="height: 45px; font-size: 18px;" required>
-                              <select name="weight" style="width: 70px; height: 28px; font-size: 15px;" required>
-                                 <option value="pkt">pkt</option>
-                              </select><br><br>
-                              <input class="btn" type="submit" name="addtocart" value="Add To Cart">
-                           
-                        </div>
-                        <div class="img"><img src="admin/<?php echo $row['pimage'] ?>" style="float: right; width: 80px; height: 90px;">
-                        </div>
-                        <div class="price">₹<?php echo $row['price']; ?>/pkt</div>
-                     </div>
-                  <?php endwhile; ?>
-
+                 
                </div>
             </div>
          </div>
@@ -160,28 +117,6 @@
             <div class="swiper-slide slide">
                <h3 class="title">Cold Drink</h3>
                <div class="box-container">
-                  <?php
-                  include 'partials/datacon.php';
-                  $query = "select * from tblProduct where category='colddrink'";
-                  $result = mysqli_query($conn, $query);
-                  while ($row = mysqli_fetch_assoc($result)) :
-                  ?>
-                     <div class="box">
-                        <div class="info">
-                           <h3><?php echo $row['pname']; ?></h3>
-                           <br>
-                              <input type="text" size="8" name="quantity" placeholder="quantity" style="height: 45px; font-size: 18px;" required>
-                              <select name="weight" style="width: 70px; height: 28px; font-size: 15px;" required>
-                                 <option value="bottle">bottle</option>
-                              </select><br><br>
-                              <input class="btn" type="submit" name="addtocart" value="Add To Cart">
-
-                        </div>
-                        <div class="img"><img src="admin/<?php echo $row['pimage'] ?>" style="float: right; width: 100px; height: 100px;">
-                        </div>
-                        <div class="price">₹<?php echo $row['price']; ?>/bottle</div>
-                     </div>
-                  <?php endwhile; ?>
 
                </div>
             </div>

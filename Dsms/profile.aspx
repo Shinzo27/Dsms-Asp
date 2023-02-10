@@ -15,7 +15,8 @@
                     </div>
                     <div class="content-wthree">
                         <h2>User Profile</h2>
-
+                        <br />
+                        <br />
                         <label style="font-size: large;">Username :</label>
                         <asp:TextBox ID="txtuname" runat="server" CssClass="email" ReadOnly="True"></asp:TextBox>
                         <label style="font-size: large;">Email : </label>
@@ -33,7 +34,7 @@
         </div>
 
 
-        <div class="container px-3 my-5 clearfix">
+       <%-- <div class="container px-3 my-5 clearfix">
             <!-- Shopping cart table -->
             <div class="card">
                 <div class="card-header">
@@ -73,7 +74,7 @@
 
                 </div>
             </div>
-        </div>
+        </div>--%>
     </section>
 
     <script src="js/jquery.min.js"></script>
