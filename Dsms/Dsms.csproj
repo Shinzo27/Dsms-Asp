@@ -2320,9 +2320,9 @@
     <Content Include="Fontawesome\webfonts\fa-v4compatibility.ttf" />
     <Content Include="Fontawesome\webfonts\fa-v4compatibility.woff2" />
     <Content Include="Header.Master" />
-    <Content Include="assets\dbDsms.bak" />
     <Content Include="admin\css\bootstrap.min.css.map" />
     <Content Include="admin\js\bootstrap.bundle.min.js.map" />
+    <Content Include="assets\dbDsms.bak" />
     <None Include="packages.config" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
