@@ -90,9 +90,6 @@ namespace Dsms
 
         protected void btnRegister_Click(object sender, EventArgs e)
         {
-            if (!IsPostBack)
-            {
-
 
                 if (sendOtp == Convert.ToInt32(txtOtp.Text))
                 {
@@ -110,11 +107,6 @@ namespace Dsms
                         con.Close();
                     }
                 }
-            }
-            else
-            {
-                Response.Redirect("login.aspx");
-            }
         }
     }
 }
