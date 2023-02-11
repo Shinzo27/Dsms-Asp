@@ -16,6 +16,8 @@
                     <div class="content-wthree">
                         <h2>Register Now</h2>
                         <p>Join Us In This Journey By Being A Part Of It! </p>
+                            <asp:RegularExpressionValidator ID="RegularExpressionValidator1" runat="server" ControlToValidate="txtEmail" ErrorMessage="Enter Proper Email" Font-Size="Medium" ValidationExpression="\w+([-+.']\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*"></asp:RegularExpressionValidator>
+                            <asp:RegularExpressionValidator ID="RegularExpressionValidator2" runat="server" ControlToValidate="txtOtp" ErrorMessage="Enter Numbers Only in OTP" Font-Size="Medium"></asp:RegularExpressionValidator>
                             <asp:TextBox ID="txtUsername" runat="server" CssClass="inputBox" placeholder="Enter Your Username" Width="300px"></asp:TextBox>
                             <asp:TextBox ID="txtEmail" runat="server" CssClass="inputBox" placeholder="Enter Your Email" Width="300px" TextMode="Email"></asp:TextBox>
                             <br/>

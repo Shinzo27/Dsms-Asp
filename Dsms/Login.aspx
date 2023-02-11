@@ -16,7 +16,10 @@
                     </div>
                     <div class="content-wthree">
                         <h2>Login Now</h2>
-                        <p>Welcome to our store where you can get everything fresh with fresh vibes!</p>
+                        <p>Welcome to our store where you can get everything fresh with fresh vibes!</p>                        
+                        <asp:RequiredFieldValidator ID="RequiredFieldValidator2" runat="server" ControlToValidate="txtPassword" ErrorMessage="Enter Password" Font-Size="Medium"></asp:RequiredFieldValidator>
+                        <asp:RegularExpressionValidator ID="RegularExpressionValidator1" runat="server" ControlToValidate="txtEmail" ErrorMessage="Enter Proper Email" Font-Size="Medium" ValidationExpression="\w+([-+.']\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*"></asp:RegularExpressionValidator>
+                            <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ControlToValidate="txtEmail" ErrorMessage="Enter Email" Font-Size="Medium"></asp:RequiredFieldValidator>
                         <br />
                             <asp:TextBox ID="txtEmail" runat="server" class="email" CssClass="inputBox" placeholder="Enter your Email" style="margin-top: 5px;" Width="300px"></asp:TextBox>
                             <asp:TextBox ID="txtPassword" runat="server" class="passowrd" CssClass="inputBox" placeholder="Enter your Password" TextMode="Password" Width="300px" ></asp:TextBox>
@@ -32,7 +35,7 @@
         </div>
     </section>
 
-        <script src="js/jquery.min.js"></script>
+        <%--<script src="js/jquery.min.js"></script>
     <script>
         $(document).ready(function (c) {
             $('.alert-close').on('click', function (c) {
@@ -41,5 +44,5 @@
                 });
             });
         });
-    </script>
+    </script>--%>   
 </asp:Content>
