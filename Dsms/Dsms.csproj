@@ -67,6 +67,22 @@
     <Reference Include="System.EnterpriseServices" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="admin\addproduct.aspx" />
+    <Content Include="admin\css\addproduct.css" />
+    <Content Include="admin\css\bootstrap.min.css" />
+    <Content Include="admin\css\dataTables.bootstrap5.min.css" />
+    <Content Include="admin\css\style.css" />
+    <Content Include="admin\images\cashew.jpg" />
+    <Content Include="admin\images\icon.ico" />
+    <Content Include="admin\images\images.jpeg" />
+    <Content Include="admin\images\logo.png" />
+    <Content Include="admin\images\undraw_experience_design_re_ca7l.svg" />
+    <Content Include="admin\index.aspx" />
+    <Content Include="admin\js\bootstrap.bundle.min.js" />
+    <Content Include="admin\js\dataTables.bootstrap5.min.js" />
+    <Content Include="admin\js\jquery-3.5.1.js" />
+    <Content Include="admin\js\jquery.dataTables.min.js" />
+    <Content Include="admin\js\script.js" />
     <Content Include="Css\admincss.css" />
     <Content Include="Css\cart.css" />
     <Content Include="Css\checkout.css" />
@@ -2177,6 +2193,20 @@
     <Content Include="profile.aspx" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="admin\addproduct.aspx.cs">
+      <DependentUpon>addproduct.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="admin\addproduct.aspx.designer.cs">
+      <DependentUpon>addproduct.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="admin\index.aspx.cs">
+      <DependentUpon>index.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="admin\index.aspx.designer.cs">
+      <DependentUpon>index.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Header.Master.cs">
       <DependentUpon>Header.Master</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -2291,6 +2321,8 @@
     <Content Include="Fontawesome\webfonts\fa-v4compatibility.woff2" />
     <Content Include="Header.Master" />
     <Content Include="assets\dbDsms.bak" />
+    <Content Include="admin\css\bootstrap.min.css.map" />
+    <Content Include="admin\js\bootstrap.bundle.min.js.map" />
     <None Include="packages.config" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>

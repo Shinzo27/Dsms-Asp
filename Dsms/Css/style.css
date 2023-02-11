@@ -472,11 +472,6 @@ section {
   color: var(--peru);
 }
 
-.menu .slide .box-container .box:hover {
-  transform: scale(0.9);
-  cursor: pointer;
-}
-
 .order {
   background: var(--peru);
 }
