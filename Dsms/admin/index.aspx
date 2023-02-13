@@ -172,6 +172,10 @@
                         <asp:BoundField DataField="image" HeaderText="image" SortExpression="image" />
                         <asp:BoundField DataField="price" HeaderText="price" SortExpression="price" />
                         <asp:BoundField DataField="date" HeaderText="date" SortExpression="date" />
+                        
+                        <asp:HyperLinkField DataNavigateUrlFields="pid" DataNavigateUrlFormatString="UpdateProfile.aspx?pid={0}" HeaderText="Edit" Text="Edit" />
+                        <asp:HyperLinkField DataNavigateUrlFields="pid" DataNavigateUrlFormatString="Deleteproduct.aspx?pid={0}" HeaderText="delete" Text="Delete" />
+                        
                     </Columns>
                     <EditRowStyle BackColor="#2461BF" />
                     <FooterStyle BackColor="#507CD1" Font-Bold="True" ForeColor="White" />

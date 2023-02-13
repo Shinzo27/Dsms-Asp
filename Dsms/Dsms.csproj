@@ -72,6 +72,7 @@
     <Content Include="admin\css\bootstrap.min.css" />
     <Content Include="admin\css\dataTables.bootstrap5.min.css" />
     <Content Include="admin\css\style.css" />
+    <Content Include="admin\Deleteproduct.aspx" />
     <Content Include="admin\images\cashew.jpg" />
     <Content Include="admin\images\icon.ico" />
     <Content Include="admin\images\images.jpeg" />
@@ -83,6 +84,7 @@
     <Content Include="admin\js\jquery-3.5.1.js" />
     <Content Include="admin\js\jquery.dataTables.min.js" />
     <Content Include="admin\js\script.js" />
+    <Content Include="admin\UpdateProduct.aspx" />
     <Content Include="Css\admincss.css" />
     <Content Include="Css\cart.css" />
     <Content Include="Css\checkout.css" />
@@ -2200,12 +2202,26 @@
     <Compile Include="admin\addproduct.aspx.designer.cs">
       <DependentUpon>addproduct.aspx</DependentUpon>
     </Compile>
+    <Compile Include="admin\Deleteproduct.aspx.cs">
+      <DependentUpon>Deleteproduct.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="admin\Deleteproduct.aspx.designer.cs">
+      <DependentUpon>Deleteproduct.aspx</DependentUpon>
+    </Compile>
     <Compile Include="admin\index.aspx.cs">
       <DependentUpon>index.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="admin\index.aspx.designer.cs">
       <DependentUpon>index.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="admin\UpdateProduct.aspx.cs">
+      <DependentUpon>UpdateProduct.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="admin\UpdateProduct.aspx.designer.cs">
+      <DependentUpon>UpdateProduct.aspx</DependentUpon>
     </Compile>
     <Compile Include="Header.Master.cs">
       <DependentUpon>Header.Master</DependentUpon>
