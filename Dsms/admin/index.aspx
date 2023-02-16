@@ -28,7 +28,7 @@
         <span class="navbar-toggler-icon"></span>
       </button>
 
-        <asp:Button ID="btnLogout" runat="server" BackColor="#0D6EFD" ForeColor="White" OnClick="btnLogout_Click" Text="Log Out" />
+        <asp:Button ID="btnLogout" runat="server" BackColor="#0D6EFD" ForeColor="White" OnClick="btnLogout_Click" Text="Log Out" CssClass="btn" />
 
     </div>
   </nav>
@@ -163,7 +163,7 @@
                     </h4>
                     <br />
                 </div>
-                <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False" CellPadding="4" DataSourceID="SqlDataSource1" ForeColor="#333333" GridLines="None" Width="1240px" DataKeyNames="pid">
+                <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False" CellPadding="4" DataSourceID="SqlDataSource1" ForeColor="#333333" GridLines="None" Width="1134px" DataKeyNames="pid">
                     <AlternatingRowStyle BackColor="White" />
                     <Columns>
                         <asp:BoundField DataField="pid" HeaderText="pid" InsertVisible="False" ReadOnly="True" SortExpression="pid" />
@@ -173,7 +173,7 @@
                         <asp:BoundField DataField="price" HeaderText="price" SortExpression="price" />
                         <asp:BoundField DataField="date" HeaderText="date" SortExpression="date" />
                         
-                        <asp:HyperLinkField DataNavigateUrlFields="pid" DataNavigateUrlFormatString="UpdateProfile.aspx?pid={0}" HeaderText="Edit" Text="Edit" />
+                        <asp:HyperLinkField DataNavigateUrlFields="pid" DataNavigateUrlFormatString="UpdateProduct.aspx?pid={0}" HeaderText="Edit" Text="Edit" />
                         <asp:HyperLinkField DataNavigateUrlFields="pid" DataNavigateUrlFormatString="Deleteproduct.aspx?pid={0}" HeaderText="delete" Text="Delete" />
                         
                     </Columns>

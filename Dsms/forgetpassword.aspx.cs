@@ -17,7 +17,10 @@ namespace Dsms
         SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["dbconnection"].ConnectionString);
         protected void Page_Load(object sender, EventArgs e)
         {
-
+            if(Session["loggedin"] == null)
+            {
+                Response.Redirect("login.aspx");
+            }
         }
 
         protected void Button1_Click(object sender, EventArgs e)
@@ -36,7 +39,7 @@ namespace Dsms
                     MailMessage mm = new MailMessage("pateldryfruit55@gmail.com", toEmail);
                     mm.Body = emailbody;
                     mm.IsBodyHtml = true;
-                    mm.Subject = "One Time Password For Registration!";
+                    mm.Subject = "Reset Link for Forget Password!";
                     mm.Priority = MailPriority.High;
                     SmtpClient SMTP = new SmtpClient("smtp.gmail.com", 587);
                     SMTP.DeliveryMethod = SmtpDeliveryMethod.Network;
@@ -48,7 +51,7 @@ namespace Dsms
                     };
                     SMTP.EnableSsl = true;
                     SMTP.Send(mm);
-                    ScriptManager.RegisterStartupScript(this, this.GetType(), "k", "swal('Check Email!', 'Your OTP is sent to your email!', 'success');", true);
+                    ScriptManager.RegisterStartupScript(this, this.GetType(), "k", "swal('Check Email!', 'Activation link is sent to your gmail!', 'success');", true);
                     Session["otpsent"] = true;
                 }
         }
