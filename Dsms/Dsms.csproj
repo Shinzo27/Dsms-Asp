@@ -2193,6 +2193,7 @@
     <Content Include="forgetpassword.aspx" />
     <Content Include="newpassword.aspx" />
     <Content Include="profile.aspx" />
+    <Content Include="cart.aspx" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="admin\addproduct.aspx.cs">
@@ -2279,6 +2280,13 @@
     </Compile>
     <Compile Include="profile.aspx.designer.cs">
       <DependentUpon>profile.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="cart.aspx.cs">
+      <DependentUpon>cart.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="cart.aspx.designer.cs">
+      <DependentUpon>cart.aspx</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>

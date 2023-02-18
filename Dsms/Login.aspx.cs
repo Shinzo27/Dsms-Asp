@@ -27,11 +27,13 @@ namespace Dsms
                 if (dr.Read() == true)
                 {
                     string role = dr.GetValue(4).ToString();
+                    int uid = (int)dr.GetValue(0);
                     string cust = "customer";
                     string admin = "admin";
                     if(role == cust)
                     {
                         Session["loggedin"] = "loggedin";
+                        Session["uid"] = uid;
                         Session["username"] = dr.GetValue(1).ToString();
                         Response.Redirect("index.aspx");
                     }

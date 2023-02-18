@@ -2,8 +2,8 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceholder1" runat="server">
-    <section class="menu" id="dryfruit">
 
+    <section class="menu" id="dryfruit">
       <div class="heading">
          <span>list</span>
          <h3>Our products</h3>
@@ -28,23 +28,26 @@
                         </div>
                         <div class="price">₹750/1kg</div>
                     </div>--%>
-                   <asp:DataList ID="DataList1" runat="server" DataKeyField="pid" DataSourceID="SqlDataSource1" RepeatDirection="Horizontal">
+                   <asp:DataList ID="DataList1" runat="server" DataKeyField="pid" DataSourceID="SqlDataSource1" RepeatDirection="Horizontal" OnItemCommand="DataList1_ItemCommand">
                        <ItemTemplate>
-                        <div class="box">
-                        <div class="info">
-                           <h3><%# Eval("pname") %></h3>
-                           <br>
-                              <input type="text" size="8" placeholder="quantity" name="quantity" style="height: 45px; font-size: 18px;" required>
-                              <select name="weight" style="width: 70px; height: 28px; font-size: 15px;" required>
-                                 <option value="250gm">250gms</option>
-                              </select><br><br>
-                              <input class="btn" type="submit" name="addtocart" value="Add To Cart">
-                           <br>
+                            <div class="box">
+                            <div class="info">
+                               <h3><%# Eval("pname") %></h3>
+                               <br>
+                                <asp:TextBox ID="txtQuantity" runat="server" Height="45px" Width="99px" placeholder="Enter Quantity"></asp:TextBox>
+                                <select name="weight" required="" style="width: 70px; height: 28px; font-size: 15px;">
+                                    <option value="250gm">250gms</option>
+                                </select><asp:Label ID="pid" runat="server" Text='<%# Eval("pid") %>' Visible="False"></asp:Label>
+                                <br>
+                                <br>
+                                <asp:Button ID="btnAddtocart" runat="server" CssClass="btn" Text="Add to cart" Width="143px" Height="35px" />
+                                <br>
+
+                            </div>
+                            <div class="img"><img src="<%# Eval("image") %>" style="float: right; width: 100px; height: 100px;" >
+                            </div>
+                            <div class="price">₹ <%# Eval("price") %>/1kg</div>
                         </div>
-                        <div class="img"><img src="<%# Eval("image") %>" style="float: right; width: 100px; height: 100px;" >
-                        </div>
-                        <div class="price">₹ <%# Eval("price") %>/1kg</div>
-                    </div>
                        </ItemTemplate>
 
                    </asp:DataList>
@@ -59,30 +62,37 @@
       </div>
    </section>
 
-   <section class="menu" id="driedfruit">
+    <section class="menu" id="driedfruit">
+      <div class="heading">
+         <span>list</span>
+         <h3>Our products</h3>
+      </div>
       <div class="swiper menu-slider">
          <div class="swiper-wrapper">
             <div class="swiper-slide slide">
-               <h3 class="title">Driedfruits</h3>
+               <h3 class="title">Driedfruit</h3>
                <div class="box-container">
-                  <asp:DataList ID="DataList2" runat="server" DataSourceID="SqlDataSource2" RepeatDirection="Horizontal">
-                      <ItemTemplate>
+                   <asp:DataList ID="DataList2" runat="server" DataKeyField="pid" DataSourceID="SqlDataSource2" RepeatDirection="Horizontal">
+                       <ItemTemplate>
                         <div class="box">
                         <div class="info">
                            <h3><%# Eval("pname") %></h3>
                            <br>
-                              <input type="text" size="8" placeholder="quantity" name="quantity" style="height: 45px; font-size: 18px;" required>
-                              <select name="weight" style="width: 70px; height: 28px; font-size: 15px;" required>
-                                 <option value="250gm">250gms</option>
-                              </select><br><br>
-                              <input class="btn" type="submit" name="addtocart" value="Add To Cart">
-                           <br>
+                            <asp:TextBox ID="txtQuantity" runat="server" Height="45px" Width="99px" placeholder="Enter Quantity"></asp:TextBox>
+                            <select name="weight" required="" style="width: 70px; height: 28px; font-size: 15px;">
+                                <option value="250gm">250gms</option>
+                            </select><br>
+                            <br>
+                            <asp:Button ID="btnAddtocart" runat="server" CssClass="btn" Text="Add to cart" Width="143px" Height="35px" />
+                            <br>
+
                         </div>
                         <div class="img"><img src="<%# Eval("image") %>" style="float: right; width: 100px; height: 100px;" >
                         </div>
                         <div class="price">₹ <%# Eval("price") %>/1kg</div>
                     </div>
                        </ItemTemplate>
+
                    </asp:DataList>
                     <asp:SqlDataSource ID="SqlDataSource2" runat="server" ConnectionString="<%$ ConnectionStrings:dbDsmsConnectionString %>" SelectCommand="SELECT * FROM [tblProduct] WHERE ([category] = @category)">
                         <SelectParameters>
@@ -95,30 +105,37 @@
       </div>
    </section>
 
-   <section class="menu" id="masala">
+    <section class="menu" id="masala">
+      <div class="heading">
+         <span>list</span>
+         <h3>Our products</h3>
+      </div>
       <div class="swiper menu-slider">
          <div class="swiper-wrapper">
             <div class="swiper-slide slide">
                <h3 class="title">Masala</h3>
                <div class="box-container">
-                     <asp:DataList ID="DataList3" runat="server" DataSourceID="SqlDataSource3" RepeatDirection="Horizontal">
-                         <ItemTemplate>
+                   <asp:DataList ID="DataList3" runat="server" DataKeyField="pid" DataSourceID="SqlDataSource3" RepeatDirection="Horizontal" >
+                       <ItemTemplate>
                         <div class="box">
                         <div class="info">
                            <h3><%# Eval("pname") %></h3>
                            <br>
-                              <input type="text" size="8" placeholder="quantity" name="quantity" style="height: 45px; font-size: 18px;" required>
-                              <select name="weight" style="width: 70px; height: 28px; font-size: 15px;" required>
-                                 <option value="250gm">250gms</option>
-                              </select><br><br>
-                              <input class="btn" type="submit" name="addtocart" value="Add To Cart">
-                           <br>
+                            <asp:TextBox ID="txtQuantity" runat="server" Height="45px" Width="99px" placeholder="Enter Quantity"></asp:TextBox>
+                            <select name="weight" required="" style="width: 70px; height: 28px; font-size: 15px;">
+                                <option value="250gm">250gms</option>
+                            </select><br>
+                            <br>
+                            <asp:Button ID="btnAddtocart" runat="server" CssClass="btn" Text="Add to cart" Width="143px" Height="35px" />
+                            <br>
+
                         </div>
                         <div class="img"><img src="<%# Eval("image") %>" style="float: right; width: 100px; height: 100px;" >
                         </div>
                         <div class="price">₹ <%# Eval("price") %>/1kg</div>
                     </div>
                        </ItemTemplate>
+
                    </asp:DataList>
                     <asp:SqlDataSource ID="SqlDataSource3" runat="server" ConnectionString="<%$ ConnectionStrings:dbDsmsConnectionString %>" SelectCommand="SELECT * FROM [tblProduct] WHERE ([category] = @category)">
                         <SelectParameters>
@@ -131,31 +148,37 @@
       </div>
    </section>
 
-   <section class="menu" id="namkeen">
+    <section class="menu" id="namkeen">
+      <div class="heading">
+         <span>list</span>
+         <h3>Our products</h3>
+      </div>
       <div class="swiper menu-slider">
          <div class="swiper-wrapper">
             <div class="swiper-slide slide">
                <h3 class="title">Namkeen</h3>
-               <br>
                <div class="box-container">
-                    <asp:DataList ID="DataList4" runat="server" DataSourceID="SqlDataSource4" RepeatDirection="Horizontal">
-                        <ItemTemplate>
+                   <asp:DataList ID="DataList4" runat="server" DataKeyField="pid" DataSourceID="SqlDataSource4" RepeatDirection="Horizontal" >
+                       <ItemTemplate>
                         <div class="box">
                         <div class="info">
                            <h3><%# Eval("pname") %></h3>
                            <br>
-                              <input type="text" size="8" placeholder="quantity" name="quantity" style="height: 45px; font-size: 18px;" required>
-                              <select name="weight" style="width: 70px; height: 28px; font-size: 15px;" required>
-                                 <option value="250gm">250gms</option>
-                              </select><br><br>
-                              <input class="btn" type="submit" name="addtocart" value="Add To Cart">
-                           <br>
+                            <asp:TextBox ID="txtQuantity" runat="server" Height="45px" Width="99px" placeholder="Enter Quantity"></asp:TextBox>
+                            <select name="weight" required="" style="width: 70px; height: 28px; font-size: 15px;">
+                                <option value="250gm">250gms</option>
+                            </select><br>
+                            <br>
+                            <asp:Button ID="btnAddtocart" runat="server" CssClass="btn" Text="Add to cart" Width="143px" Height="35px" />
+                            <br>
+
                         </div>
                         <div class="img"><img src="<%# Eval("image") %>" style="float: right; width: 100px; height: 100px;" >
                         </div>
                         <div class="price">₹ <%# Eval("price") %>/1kg</div>
                     </div>
                        </ItemTemplate>
+
                    </asp:DataList>
                     <asp:SqlDataSource ID="SqlDataSource4" runat="server" ConnectionString="<%$ ConnectionStrings:dbDsmsConnectionString %>" SelectCommand="SELECT * FROM [tblProduct] WHERE ([category] = @category)">
                         <SelectParameters>
@@ -168,30 +191,37 @@
       </div>
    </section>
 
-   <section class="menu" id="colddrink">
+    <section class="menu" id="colddrink">
+      <div class="heading">
+         <span>list</span>
+         <h3>Our products</h3>
+      </div>
       <div class="swiper menu-slider">
          <div class="swiper-wrapper">
             <div class="swiper-slide slide">
                <h3 class="title">Cold Drink</h3>
                <div class="box-container">
-                   <asp:DataList ID="DataList5" runat="server" DataSourceID="SqlDataSource5" RepeatDirection="Horizontal">
+                   <asp:DataList ID="DataList5" runat="server" DataKeyField="pid" DataSourceID="SqlDataSource5" RepeatDirection="Horizontal" >
                        <ItemTemplate>
                         <div class="box">
                         <div class="info">
                            <h3><%# Eval("pname") %></h3>
                            <br>
-                              <input type="text" size="8" placeholder="quantity" name="quantity" style="height: 45px; font-size: 18px;" required>
-                              <select name="weight" style="width: 70px; height: 28px; font-size: 15px;" required>
-                                 <option value="250gm">250gms</option>
-                              </select><br><br>
-                              <input class="btn" type="submit" name="addtocart" value="Add To Cart">
-                           <br>
+                            <asp:TextBox ID="txtQuantity" runat="server" Height="45px" Width="99px" placeholder="Enter Quantity"></asp:TextBox>
+                            <select name="weight" required="" style="width: 70px; height: 28px; font-size: 15px;">
+                                <option value="250gm">250gms</option>
+                            </select><br>
+                            <br>
+                            <asp:Button ID="btnAddtocart" runat="server" CssClass="btn" Text="Add to cart" Width="143px" Height="35px" />
+                            <br>
+
                         </div>
                         <div class="img"><img src="<%# Eval("image") %>" style="float: right; width: 100px; height: 100px;" >
                         </div>
                         <div class="price">₹ <%# Eval("price") %>/1kg</div>
                     </div>
                        </ItemTemplate>
+
                    </asp:DataList>
                     <asp:SqlDataSource ID="SqlDataSource5" runat="server" ConnectionString="<%$ ConnectionStrings:dbDsmsConnectionString %>" SelectCommand="SELECT * FROM [tblProduct] WHERE ([category] = @category)">
                         <SelectParameters>
@@ -203,8 +233,6 @@
          </div>
       </div>
    </section>
-
-
    <!-- menu section ends -->
 
 

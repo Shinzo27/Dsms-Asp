@@ -20,7 +20,7 @@ namespace Dsms.admin
         protected void btnLogout_Click(object sender, EventArgs e)
         {
             Session["adminloggedin"] = null;
-            Response.Redirect("../index.aspx");
+            Response.Redirect("../login.aspx");
         }
     }
 }

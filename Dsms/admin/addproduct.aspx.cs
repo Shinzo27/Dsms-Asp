@@ -11,7 +11,7 @@ namespace Dsms.admin
     public partial class addproduct : System.Web.UI.Page
     {
         string path;
-        SqlConnection con = new SqlConnection("Data Source=ROMIL\\SQLEXPRESS;Initial Catalog=dbDsms;Integrated Security=True");
+        SqlConnection con = new SqlConnection("Data Source=SHINZO\\SQLEXPRESS;Initial Catalog=dbDsms;Integrated Security=True");
         protected void Page_Load(object sender, EventArgs e)
         {
 
