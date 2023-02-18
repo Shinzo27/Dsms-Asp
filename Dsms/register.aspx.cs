@@ -17,6 +17,10 @@ namespace Dsms
         static int sendOtp = 0;
         protected void Page_Load(object sender, EventArgs e)
         {
+            if(Session["loggedin"] != null)
+            {
+                Response.Redirect("index.aspx");
+            }
             txtPassword.Enabled = false;
             txtOtp.Enabled = false;
             if (IsPostBack)
@@ -83,7 +87,6 @@ namespace Dsms
                             ScriptManager.RegisterStartupScript(this, this.GetType(), "k", "swal('Check Email!', 'Your OTP is sent to your email!', 'success');", true);
                             txtOtp.Enabled = true;
                             txtPassword.Enabled = true;
-
                 }
             }
         }
@@ -107,6 +110,10 @@ namespace Dsms
                         con.Close();
                     }
                 }
+                else
+                {
+                ScriptManager.RegisterStartupScript(this, this.GetType(), "k", "swal('Error!', 'Invalid OTP!', 'error');", true);
+            }
         }
     }
 }

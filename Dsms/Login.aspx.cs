@@ -14,7 +14,10 @@ namespace Dsms
         SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["dbconnection"].ConnectionString);
         protected void Page_Load(object sender, EventArgs e)
         {
-
+            if(Session["loggedin"] != null)
+            {
+                Response.Redirect("index.aspx");
+            }
         }
 
         protected void Button1_Click(object sender, EventArgs e)

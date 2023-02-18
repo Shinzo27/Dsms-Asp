@@ -79,10 +79,12 @@ namespace Dsms
         protected void btnLogout_Click(object sender, EventArgs e)
         {
             Session["loggedin"] = null;
+            Session["username"] = null;
             btnLogout.Visible = false;
             btnProfile.Visible = false;
             btnLogin.Visible = true;
             btnCart.Visible = false;
+            Response.Redirect("index.aspx");
         }
     }
 }

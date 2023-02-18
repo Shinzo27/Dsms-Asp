@@ -73,7 +73,7 @@
                         <asp:TextBox ID="txtPrice" runat="server" CssClass="name" placeholder="Enter Product Price" TextMode="Number"></asp:TextBox>
                         
                         <br />
-                        <asp:Button ID="btnSubmit" runat="server" BackColor="RoyalBlue" CssClass="btn" ForeColor="White" Text="Submit" Width="99px" OnClick="btnSubmit_Click" />
+                        <asp:Button ID="btnSubmit" runat="server" BackColor="RoyalBlue" CssClass="btn" ForeColor="White" Text="Update" Width="99px" OnClick="btnSubmit_Click" />
                         
                     </div>
                 </div>
