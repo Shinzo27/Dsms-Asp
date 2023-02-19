@@ -80,6 +80,7 @@ namespace Dsms
         {
             Session["loggedin"] = null;
             Session["username"] = null;
+            Session["uid"] = null;
             btnLogout.Visible = false;
             btnProfile.Visible = false;
             btnLogin.Visible = true;
