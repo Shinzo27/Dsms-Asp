@@ -14,12 +14,19 @@ namespace Dsms.admin
         SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["dbconnection"].ConnectionString);
         protected void Page_Load(object sender, EventArgs e)
         {
-            con.Open();
-            string id = Request.QueryString["pid"];
-            string delete = "delete from tblProduct where pid='" + id + "'";
-            SqlCommand com = new SqlCommand(delete, con);
-            com.ExecuteNonQuery();
-            Response.Redirect("index.aspx");
+            if(Session["adminloggedin"] != null)
+            {
+                con.Open();
+                string id = Request.QueryString["pid"];
+                string delete = "delete from tblProduct where pid='" + id + "'";
+                SqlCommand com = new SqlCommand(delete, con);
+                com.ExecuteNonQuery();
+                Response.Redirect("index.aspx");
+            }
+            else
+            {
+                Response.Redirect("../index.aspx");
+            }
         }
     }
 }

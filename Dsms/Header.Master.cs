@@ -11,6 +11,13 @@ namespace Dsms
     {
         protected void Page_Load(object sender, EventArgs e)
         {
+            Response.Cache.SetExpires(DateTime.UtcNow.AddDays(-1));
+            Response.Cache.SetCacheability(HttpCacheability.NoCache);
+            Response.Cache.SetNoStore();
+
+            Response.ClearHeaders();
+            Response.AddHeader("Cache-Control", "no-cache, no-store, max-age=0, must-revalidate");
+            Response.AddHeader("Pragma", "no-cache");
             if (Session["loggedin"] == null)
             {
                 btnProfile.Visible = false;

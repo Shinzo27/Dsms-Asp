@@ -14,7 +14,10 @@ namespace Dsms.admin
         SqlConnection con = new SqlConnection("Data Source=SHINZO\\SQLEXPRESS;Initial Catalog=dbDsms;Integrated Security=True");
         protected void Page_Load(object sender, EventArgs e)
         {
-
+            if(Session["adminloggedin"] == null)
+            {
+                Response.Redirect("../index.aspx");
+            }
         }
 
         protected void btnSubmit_Click(object sender, EventArgs e)
