@@ -23,6 +23,7 @@ namespace Dsms
             }
             txtPassword.Enabled = false;
             txtOtp.Enabled = false;
+            btnRegister.Enabled = false;
             if (IsPostBack)
             {
                 if(ViewState["username"] != null)
@@ -69,7 +70,7 @@ namespace Dsms
                             String toEmail = txtEmail.Text;
                             String username = txtUsername.Text;
                             String emailbody = "Hello " + username + "! Here is your One Time Password For Registration : <b>" + sendOtp + "</b>.<br><br>Thank You For Interacting With Patel's Dryfruits And Masala!!<br><br> Have A Good Day!";
-                            MailMessage mm = new MailMessage("pateldryfruit55@gmail.com", toEmail);
+                            MailMessage mm = new MailMessage("pateldryfruit27@gmail.com", toEmail);
                             mm.Body = emailbody;
                             mm.IsBodyHtml = true;
                             mm.Subject = "One Time Password For Registration!";
@@ -79,14 +80,15 @@ namespace Dsms
                             SMTP.UseDefaultCredentials = false;
                             SMTP.Credentials = new NetworkCredential()
                             {
-                                UserName = "pateldryfruit55@gmail.com",
-                                Password = "tsxpyljoybempncx"
+                                UserName = "pateldryfruit27@gmail.com",
+                                Password = "bibsroqiopajinnm"
                             };
                             SMTP.EnableSsl = true;
                             SMTP.Send(mm);
                             ScriptManager.RegisterStartupScript(this, this.GetType(), "k", "swal('Check Email!', 'Your OTP is sent to your email!', 'success');", true);
                             txtOtp.Enabled = true;
                             txtPassword.Enabled = true;
+                            btnRegister.Enabled = true;
                 }
             }
         }
