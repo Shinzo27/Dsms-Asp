@@ -84,6 +84,8 @@
     <Content Include="admin\js\jquery-3.5.1.js" />
     <Content Include="admin\js\jquery.dataTables.min.js" />
     <Content Include="admin\js\script.js" />
+    <Content Include="admin\product.aspx" />
+    <Content Include="admin\sales.aspx" />
     <Content Include="admin\UpdateProduct.aspx" />
     <Content Include="Css\admincss.css" />
     <Content Include="Css\cart.css" />
@@ -2216,6 +2218,20 @@
     </Compile>
     <Compile Include="admin\index.aspx.designer.cs">
       <DependentUpon>index.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="admin\product.aspx.cs">
+      <DependentUpon>product.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="admin\product.aspx.designer.cs">
+      <DependentUpon>product.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="admin\sales.aspx.cs">
+      <DependentUpon>sales.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="admin\sales.aspx.designer.cs">
+      <DependentUpon>sales.aspx</DependentUpon>
     </Compile>
     <Compile Include="admin\UpdateProduct.aspx.cs">
       <DependentUpon>UpdateProduct.aspx</DependentUpon>

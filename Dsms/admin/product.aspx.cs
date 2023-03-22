@@ -7,7 +7,7 @@ using System.Web.UI.WebControls;
 
 namespace Dsms.admin
 {
-    public partial class index : System.Web.UI.Page
+    public partial class product : System.Web.UI.Page
     {
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -20,7 +20,7 @@ namespace Dsms.admin
             Response.AddHeader("Pragma", "no-cache");
             if (Session["adminloggedin"] == null)
             {
-                Response.Redirect("../index.aspx");
+                Response.Redirect("../login.aspx");
             }
         }
 

@@ -58,9 +58,9 @@
               <span class="me-2"><i class="bi bi-chevron-right"></i></span>
               <span>Sales</span>
             </a>
-            <a href="logout.aspx" class="nav-link px-3 active">
+            <a href="admin.aspx" class="nav-link px-3 active">
               <span class="me-2"><i class="bi-person-fill"></i></span>
-              <span>Logout</span>
+              <span>Admin</span>
             </a>
           </li>
           <li class="my-4">

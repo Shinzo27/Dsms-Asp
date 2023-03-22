@@ -14,7 +14,14 @@ namespace Dsms.admin
         SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["dbconnection"].ConnectionString);
         protected void Page_Load(object sender, EventArgs e)
         {
-            if(Session["adminloggedin"] != null)
+            Response.Cache.SetExpires(DateTime.UtcNow.AddDays(-1));
+            Response.Cache.SetCacheability(HttpCacheability.NoCache);
+            Response.Cache.SetNoStore();
+
+            Response.ClearHeaders();
+            Response.AddHeader("Cache-Control", "no-cache, no-store, max-age=0, must-revalidate");
+            Response.AddHeader("Pragma", "no-cache");
+            if (Session["adminloggedin"] != null)
             {
                 con.Open();
                 string id = Request.QueryString["pid"];
