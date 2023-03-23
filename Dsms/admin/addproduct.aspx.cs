@@ -30,14 +30,25 @@ namespace Dsms.admin
         protected void btnSubmit_Click(object sender, EventArgs e)
         {
             con.Open();
-            FileUpload1.SaveAs(Request.PhysicalApplicationPath + "/Images/" + FileUpload1.FileName.ToString());
-            path = "Images/" + FileUpload1.FileName.ToString();
-            string query = "insert into tblProduct(pname,price,category,image,date) values ('" + txtPname.Text + "','" + txtPrice.Text + "','" + ddCategory.SelectedValue.ToString() + "','" + path.ToString() + "', GETDATE())";
-            SqlCommand com = new SqlCommand(query, con);
-            com.ExecuteNonQuery();
-            string stock = "insert into tblStock(pid,stock)"
-            ScriptManager.RegisterStartupScript(this, this.GetType(), "k", "swal('Success!', 'Product Added Successfully!', 'success').then(function() {window.location.href = 'index.aspx'}); ", true);
-            con.Close();
+            string checkprod = "select * from tblProduct where pname='" + txtPname.Text + "'";
+            SqlCommand checkcom = new SqlCommand(checkprod, con);
+            SqlDataReader reader = checkcom.ExecuteReader();
+            if (reader.Read())
+            {
+                ScriptManager.RegisterStartupScript(this, this.GetType(), "k", "swal('Error!', 'Product Already Added!', 'error');", true);
+            }
+            else { 
+                   FileUpload1.SaveAs(Request.PhysicalApplicationPath + "/Images/" + FileUpload1.FileName.ToString());
+                   path = "Images/" + FileUpload1.FileName.ToString();
+                   string query = "insert into tblProduct(pname,price,category,image,date) values ('" + txtPname.Text + "','" + txtPrice.Text + "','" + ddCategory.SelectedValue.ToString() + "','" + path.ToString() + "', GETDATE())";
+                   SqlCommand com = new SqlCommand(query, con);
+                   com.ExecuteNonQuery();
+                   string stock = "insert into tblStock(pname,stock) values ('" + txtPname.Text + "','" + txtStock.Text + "')";
+                   SqlCommand stkquery = new SqlCommand(stock, con);
+                   stkquery.ExecuteNonQuery();
+                   ScriptManager.RegisterStartupScript(this, this.GetType(), "k", "swal('Success!', 'Product Added Successfully!', 'success').then(function() {window.location.href = 'index.aspx'}); ", true);
+                   con.Close();
+            }
         }
     }
 }
