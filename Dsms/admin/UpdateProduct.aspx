@@ -54,7 +54,9 @@
                         <h2>Update Product</h2>
                         <p>Fill all the details properly!</p>
                         <br />
-                        <asp:TextBox ID="txtPname" runat="server" CssClass="content-wthree" placeholder="Enter Product Name"></asp:TextBox>
+                        <asp:TextBox ID="txtPname" runat="server" CssClass="content-wthree" placeholder="Product Name" Width="174px"></asp:TextBox>
+                        &nbsp;
+                        <asp:Label ID="lblPname" runat="server" Text="Label" Font-Size="Medium" ForeColor="#816681"></asp:Label>
                         <br />
                         <asp:DropDownList ID="ddCategory" runat="server" style="width: 90px; height: 30px; text-align: center; background-color: #4169e1; color: white; font-size: 14px; border-radius: 5px 5px 5px 5px;">
                             <asp:ListItem Value="dryfruit">Dryfruit</asp:ListItem>
@@ -71,10 +73,10 @@
                         <asp:FileUpload ID="FileUpload1" runat="server" />
                         <br />
                         <asp:TextBox ID="txtPrice" runat="server" CssClass="name" placeholder="Enter Product Price" TextMode="Number"></asp:TextBox>
-                        
+                        &nbsp;
+                        <asp:Label ID="lblPrice" runat="server" Text="Label" Font-Size="Medium" ForeColor="#816681"></asp:Label>
                         <br />
                         <asp:Button ID="btnSubmit" runat="server" BackColor="RoyalBlue" CssClass="btn" ForeColor="White" Text="Update" Width="99px" OnClick="btnSubmit_Click" />
-                        
                     </div>
                 </div>
             </div>

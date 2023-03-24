@@ -7,8 +7,12 @@
         <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False" CellPadding="2" DataKeyNames="cid" DataMember="DefaultView" DataSourceID="SqlDataSource1" EmptyDataText="No Item In the Cart" Font-Bold="False" Font-Size="Large" ForeColor="#333333" GridLines="None" Height="100px" RowHeaderColumn="cid" Width="1000px" ShowHeaderWhenEmpty="True" ShowFooter="True">
                     <AlternatingRowStyle BackColor="White" />
                     <Columns>
-                        <asp:BoundField DataField="cid" HeaderText="Sr. No." InsertVisible="False" ReadOnly="True" SortExpression="cid" />
-                        <asp:BoundField DataField="pname" HeaderText="Product" SortExpression="pname" />
+                        <asp:TemplateField HeaderText="Sr. No">
+                            <ItemTemplate> 
+                                <%# Container.DataItemIndex + 1 %>
+                            </ItemTemplate>
+                        </asp:TemplateField>
+                        <asp:BoundField DataField="pname" HeaderText="pname" SortExpression="pname" />
                         <asp:BoundField DataField="price" HeaderText="price" SortExpression="price" />
                         <asp:BoundField DataField="quantity" HeaderText="quantity" SortExpression="quantity" />
                         <asp:BoundField DataField="total" HeaderText="total" SortExpression="total" />
@@ -25,10 +29,30 @@
                     <SortedDescendingCellStyle BackColor="#E9EBEF" />
                     <SortedDescendingHeaderStyle BackColor="#4870BE" />
         </asp:GridView>
-        <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:dbDsmsConnectionString %>" SelectCommand="SELECT * FROM [tblCart] WHERE ([uid] = @uid)">
+        <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:dbDsmsConnectionString %>" SelectCommand="SELECT * FROM [tblCart] WHERE ([uid] = @uid)" DeleteCommand="DELETE FROM [tblCart] WHERE [cid] = @cid" InsertCommand="INSERT INTO [tblCart] ([uid], [pname], [price], [quantity], [total], [date]) VALUES (@uid, @pname, @price, @quantity, @total, @date)" UpdateCommand="UPDATE [tblCart] SET [uid] = @uid, [pname] = @pname, [price] = @price, [quantity] = @quantity, [total] = @total, [date] = @date WHERE [cid] = @cid">
+            <DeleteParameters>
+                <asp:Parameter Name="cid" Type="Int32" />
+            </DeleteParameters>
+            <InsertParameters>
+                <asp:Parameter Name="uid" Type="Int32" />
+                <asp:Parameter Name="pname" Type="String" />
+                <asp:Parameter Name="price" Type="Double" />
+                <asp:Parameter Name="quantity" Type="Int32" />
+                <asp:Parameter Name="total" Type="Double" />
+                <asp:Parameter Name="date" Type="DateTime" />
+            </InsertParameters>
             <SelectParameters>
                 <asp:SessionParameter Name="uid" SessionField="uid" Type="Int32" />
             </SelectParameters>
+            <UpdateParameters>
+                <asp:Parameter Name="uid" Type="Int32" />
+                <asp:Parameter Name="pname" Type="String" />
+                <asp:Parameter Name="price" Type="Double" />
+                <asp:Parameter Name="quantity" Type="Int32" />
+                <asp:Parameter Name="total" Type="Double" />
+                <asp:Parameter Name="date" Type="DateTime" />
+                <asp:Parameter Name="cid" Type="Int32" />
+            </UpdateParameters>
         </asp:SqlDataSource>
     </div>
     </center>

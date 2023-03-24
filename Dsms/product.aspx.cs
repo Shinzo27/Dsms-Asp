@@ -24,39 +24,57 @@ namespace Dsms
             {
                 con.Open();
                 int uid = (int)Session["uid"];
-                TextBox txt = (TextBox)(e.Item.FindControl("txtQuantity"));
-                Label lbl = (Label)(e.Item.FindControl("pid"));
-                string query = "select * from tblProduct where pid='" + lbl.Text + "'";
-                SqlCommand com = new SqlCommand(query, con);
-                SqlDataReader dr = com.ExecuteReader();
-                if(dr.Read() == true)
+                TextBox txt = (TextBox)(e.Item.FindControl("txtQuantity1"));
+                if (txt.Text.Equals(""))
                 {
-                    string pname = dr.GetValue(1).ToString();
-                    float price = Convert.ToInt32(dr.GetValue(4));
-                    int q = Convert.ToInt32(txt.Text);
-                    int quantity = q;
-                    float total = q * price;
-                    
-                    string select = "select * from tblCart where pname='" + dr.GetValue(1).ToString() + "' and uid='" + uid + "'";
-                    SqlCommand sel = new SqlCommand(select, con);
-                    dr.Close();
-                    SqlDataReader reader = sel.ExecuteReader();
-                    if(reader.Read() != true)
+                    ScriptManager.RegisterStartupScript(this, this.GetType(), "k", "swal('Enter Quantity!', 'Please mention quantity', 'error');", true);
+                }
+                else{
+                    Label lbl = (Label)(e.Item.FindControl("pid"));
+                    string query = "select * from tblProduct where pid='" + lbl.Text + "'";
+                    SqlCommand com = new SqlCommand(query, con);
+                    SqlDataReader dr = com.ExecuteReader();
+                    if (dr.Read() == true)
                     {
-                        reader.Close();
-                        string insert = "insert into tblCart(uid,pname,price,quantity,total,date) values (" + uid + ",'" + pname + "','" + price + "','" + quantity + "','" + total + "',GETDATE())";
-                        SqlCommand ins = new SqlCommand(insert, con);
-                        int i = ins.ExecuteNonQuery();
-                        if (i > 0)
+                        string checkqty = "select * from tblStock where pname='" + dr.GetString(1).ToString() + "'";
+                        SqlCommand check = new SqlCommand(checkqty, con);
+                        SqlDataReader checkdr = check.ExecuteReader();
+                        if (checkdr.Read() == true)
                         {
-                            ScriptManager.RegisterStartupScript(this, this.GetType(), "k", "swal('Success!', 'Added to the cart!', 'success');", true);
+                            float cq = (float)Convert.ToDouble(checkdr.GetValue(2).ToString());
+                            int q = Convert.ToInt32(txt.Text);
+                            if (cq > q)
+                            {
+                                string pname = dr.GetValue(1).ToString();
+                                float price = Convert.ToInt32(dr.GetValue(4));
+                                float total = q * price;
+
+                                string select = "select * from tblCart where pname='" + dr.GetValue(1).ToString() + "' and uid='" + uid + "'";
+                                SqlCommand sel = new SqlCommand(select, con);
+                                dr.Close();
+                                SqlDataReader reader = sel.ExecuteReader();
+                                if (reader.Read() != true)
+                                {
+                                    reader.Close();
+                                    string insert = "insert into tblCart(uid,pname,price,quantity,total,date) values (" + uid + ",'" + pname + "','" + price + "','" + q + "','" + total + "',GETDATE())";
+                                    SqlCommand ins = new SqlCommand(insert, con);
+                                    int i = ins.ExecuteNonQuery();
+                                    if (i > 0)
+                                    {
+                                        ScriptManager.RegisterStartupScript(this, this.GetType(), "k", "swal('Success!', 'Added to the cart!', 'success');", true);
+                                    }
+                                }
+                                else
+                                {
+                                    ScriptManager.RegisterStartupScript(this, this.GetType(), "k", "swal('Already Added!', 'Item is already in the cart!', 'error');", true);
+                                }
+                            }
+                            else
+                            {
+                                ScriptManager.RegisterStartupScript(this, this.GetType(), "k", "swal('Not Enough Quantity!', 'Current Quantity is : " + cq + "', 'error');", true);
+                            }
                         }
                     }
-                    else
-                    {
-                        ScriptManager.RegisterStartupScript(this, this.GetType(), "k", "swal('Already Added!', 'Item is already in the cart!', 'error');", true);
-                    }
-                    
                 }
             }
             else
@@ -64,6 +82,270 @@ namespace Dsms
                 Response.Redirect("login.aspx");
             }
 
+        }
+
+        protected void DataList2_ItemCommand(object source, DataListCommandEventArgs e)
+        {
+            if (Session["loggedin"] != null)
+            {
+                con.Open();
+                int uid = (int)Session["uid"];
+                TextBox txt = (TextBox)e.Item.FindControl("txtQuantity2");
+                if (txt.Text.Equals(""))
+                {
+                    ScriptManager.RegisterStartupScript(this, this.GetType(), "k", "swal('Enter Quantity!', 'Please mention quantity', 'error');", true);
+                }
+                else
+                {
+                    Label lbl = (Label)e.Item.FindControl("pid");
+                    string query = "select * from tblProduct where pid='" + lbl.Text + "'";
+                    SqlCommand com = new SqlCommand(query, con);
+                    SqlDataReader dr = com.ExecuteReader();
+                    if (dr.Read() == true)
+                    {
+                        string checkqty = "select * from tblStock where pname='" + dr.GetString(1).ToString() + "'";
+                        SqlCommand check = new SqlCommand(checkqty, con);
+                        SqlDataReader checkdr = check.ExecuteReader();
+                        if (checkdr.Read() == true)
+                        {
+                            float cq = (float)Convert.ToDouble(checkdr.GetValue(2).ToString());
+                            int q = Convert.ToInt32(txt.Text);
+                            if (cq > q)
+                            {
+                                string pname = dr.GetValue(1).ToString();
+                                float price = Convert.ToInt32(dr.GetValue(4));
+                                float total = q * price;
+
+                                string select = "select * from tblCart where pname='" + dr.GetValue(1).ToString() + "' and uid='" + uid + "'";
+                                SqlCommand sel = new SqlCommand(select, con);
+                                dr.Close();
+                                SqlDataReader reader = sel.ExecuteReader();
+                                if (reader.Read() != true)
+                                {
+                                    reader.Close();
+                                    string insert = "insert into tblCart(uid,pname,price,quantity,total,date) values (" + uid + ",'" + pname + "','" + price + "','" + q + "','" + total + "',GETDATE())";
+                                    SqlCommand ins = new SqlCommand(insert, con);
+                                    int i = ins.ExecuteNonQuery();
+                                    if (i > 0)
+                                    {
+                                        ScriptManager.RegisterStartupScript(this, this.GetType(), "k", "swal('Success!', 'Added to the cart!', 'success');", true);
+                                    }
+                                }
+                                else
+                                {
+                                    ScriptManager.RegisterStartupScript(this, this.GetType(), "k", "swal('Already Added!', 'Item is already in the cart!', 'error');", true);
+                                }
+                            }
+                            else
+                            {
+                                ScriptManager.RegisterStartupScript(this, this.GetType(), "k", "swal('Not Enough Quantity!', 'Current Quantity is : " + cq + "', 'error');", true);
+                            }
+                        }
+                    }
+                }
+            }
+            else
+            {
+                Response.Redirect("login.aspx");
+            }
+        }
+
+        protected void DataList3_ItemCommand(object source, DataListCommandEventArgs e)
+        {
+            if (Session["loggedin"] != null)
+            {
+                con.Open();
+                int uid = (int)Session["uid"];
+                TextBox txt = (TextBox)e.Item.FindControl("txtQuantity3");
+                if (txt.Text.Equals(""))
+                {
+                    ScriptManager.RegisterStartupScript(this, this.GetType(), "k", "swal('Enter Quantity!', 'Please mention quantity', 'error');", true);
+                }
+                else
+                {
+                    Label lbl = (Label)e.Item.FindControl("pid");
+                    string query = "select * from tblProduct where pid='" + lbl.Text + "'";
+                    SqlCommand com = new SqlCommand(query, con);
+                    SqlDataReader dr = com.ExecuteReader();
+                    if (dr.Read() == true)
+                    {
+                        string checkqty = "select * from tblStock where pname='" + dr.GetString(1).ToString() + "'";
+                        SqlCommand check = new SqlCommand(checkqty, con);
+                        SqlDataReader checkdr = check.ExecuteReader();
+                        if (checkdr.Read() == true)
+                        {
+                            float cq = (float)Convert.ToDouble(checkdr.GetValue(2).ToString());
+                            int q = Convert.ToInt32(txt.Text);
+                            if (cq > q)
+                            {
+                                string pname = dr.GetValue(1).ToString();
+                                float price = Convert.ToInt32(dr.GetValue(4));
+                                float total = q * price;
+
+                                string select = "select * from tblCart where pname='" + dr.GetValue(1).ToString() + "' and uid='" + uid + "'";
+                                SqlCommand sel = new SqlCommand(select, con);
+                                dr.Close();
+                                SqlDataReader reader = sel.ExecuteReader();
+                                if (reader.Read() != true)
+                                {
+                                    reader.Close();
+                                    string insert = "insert into tblCart(uid,pname,price,quantity,total,date) values (" + uid + ",'" + pname + "','" + price + "','" + q + "','" + total + "',GETDATE())";
+                                    SqlCommand ins = new SqlCommand(insert, con);
+                                    int i = ins.ExecuteNonQuery();
+                                    if (i > 0)
+                                    {
+                                        ScriptManager.RegisterStartupScript(this, this.GetType(), "k", "swal('Success!', 'Added to the cart!', 'success');", true);
+                                    }
+                                }
+                                else
+                                {
+                                    ScriptManager.RegisterStartupScript(this, this.GetType(), "k", "swal('Already Added!', 'Item is already in the cart!', 'error');", true);
+                                }
+                            }
+                            else
+                            {
+                                ScriptManager.RegisterStartupScript(this, this.GetType(), "k", "swal('Not Enough Quantity!', 'Current Quantity is : " + cq + "', 'error');", true);
+                            }
+                        }
+                    }
+                }
+            }
+            else
+            {
+                Response.Redirect("login.aspx");
+            }
+        }
+
+        protected void DataList4_ItemCommand(object source, DataListCommandEventArgs e)
+        {
+            if (Session["loggedin"] != null)
+            {
+                con.Open();
+                int uid = (int)Session["uid"];
+                TextBox txt = (TextBox)e.Item.FindControl("txtQuantity4");
+                if (txt.Text.Equals(""))
+                {
+                    ScriptManager.RegisterStartupScript(this, this.GetType(), "k", "swal('Enter Quantity!', 'Please mention quantity', 'error');", true);
+                }
+                else
+                {
+                    Label lbl = (Label)e.Item.FindControl("pid");
+                    string query = "select * from tblProduct where pid='" + lbl.Text + "'";
+                    SqlCommand com = new SqlCommand(query, con);
+                    SqlDataReader dr = com.ExecuteReader();
+                    if (dr.Read() == true)
+                    {
+                        string checkqty = "select * from tblStock where pname='" + dr.GetString(1).ToString() + "'";
+                        SqlCommand check = new SqlCommand(checkqty, con);
+                        SqlDataReader checkdr = check.ExecuteReader();
+                        if (checkdr.Read() == true)
+                        {
+                            float cq = (float)Convert.ToDouble(checkdr.GetValue(2).ToString());
+                            int q = Convert.ToInt32(txt.Text);
+                            if (cq > q)
+                            {
+                                string pname = dr.GetValue(1).ToString();
+                                float price = Convert.ToInt32(dr.GetValue(4));
+                                float total = q * price;
+
+                                string select = "select * from tblCart where pname='" + dr.GetValue(1).ToString() + "' and uid='" + uid + "'";
+                                SqlCommand sel = new SqlCommand(select, con);
+                                dr.Close();
+                                SqlDataReader reader = sel.ExecuteReader();
+                                if (reader.Read() != true)
+                                {
+                                    reader.Close();
+                                    string insert = "insert into tblCart(uid,pname,price,quantity,total,date) values (" + uid + ",'" + pname + "','" + price + "','" + q + "','" + total + "',GETDATE())";
+                                    SqlCommand ins = new SqlCommand(insert, con);
+                                    int i = ins.ExecuteNonQuery();
+                                    if (i > 0)
+                                    {
+                                        ScriptManager.RegisterStartupScript(this, this.GetType(), "k", "swal('Success!', 'Added to the cart!', 'success');", true);
+                                    }
+                                }
+                                else
+                                {
+                                    ScriptManager.RegisterStartupScript(this, this.GetType(), "k", "swal('Already Added!', 'Item is already in the cart!', 'error');", true);
+                                }
+                            }
+                            else
+                            {
+                                ScriptManager.RegisterStartupScript(this, this.GetType(), "k", "swal('Not Enough Quantity!', 'Current Quantity is : " + cq + "', 'error');", true);
+                            }
+                        }
+                    }
+                }
+            }
+            else
+            {
+                Response.Redirect("login.aspx");
+            }
+        }
+
+        protected void DataList5_ItemCommand(object source, DataListCommandEventArgs e)
+        {
+            if (Session["loggedin"] != null)
+            {
+                con.Open();
+                int uid = (int)Session["uid"];
+                TextBox txt = (TextBox)e.Item.FindControl("txtQuantity5");
+                if (txt.Text.Equals(""))
+                {
+                    ScriptManager.RegisterStartupScript(this, this.GetType(), "k", "swal('Enter Quantity!', 'Please mention quantity', 'error');", true);
+                }
+                else
+                {
+                    Label lbl = (Label)e.Item.FindControl("pid");
+                    string query = "select * from tblProduct where pid='" + lbl.Text + "'";
+                    SqlCommand com = new SqlCommand(query, con);
+                    SqlDataReader dr = com.ExecuteReader();
+                    if (dr.Read() == true)
+                    {
+                        string checkqty = "select * from tblStock where pname='" + dr.GetString(1).ToString() + "'";
+                        SqlCommand check = new SqlCommand(checkqty, con);
+                        SqlDataReader checkdr = check.ExecuteReader();
+                        if (checkdr.Read() == true)
+                        {
+                            float cq = (float)Convert.ToDouble(checkdr.GetValue(2).ToString());
+                            int q = Convert.ToInt32(txt.Text);
+                            if (cq > q)
+                            {
+                                string pname = dr.GetValue(1).ToString();
+                                float price = Convert.ToInt32(dr.GetValue(4));
+                                float total = q * price;
+
+                                string select = "select * from tblCart where pname='" + dr.GetValue(1).ToString() + "' and uid='" + uid + "'";
+                                SqlCommand sel = new SqlCommand(select, con);
+                                dr.Close();
+                                SqlDataReader reader = sel.ExecuteReader();
+                                if (reader.Read() != true)
+                                {
+                                    reader.Close();
+                                    string insert = "insert into tblCart(uid,pname,price,quantity,total,date) values (" + uid + ",'" + pname + "','" + price + "','" + q + "','" + total + "',GETDATE())";
+                                    SqlCommand ins = new SqlCommand(insert, con);
+                                    int i = ins.ExecuteNonQuery();
+                                    if (i > 0)
+                                    {
+                                        ScriptManager.RegisterStartupScript(this, this.GetType(), "k", "swal('Success!', 'Added to the cart!', 'success');", true);
+                                    }
+                                }
+                                else
+                                {
+                                    ScriptManager.RegisterStartupScript(this, this.GetType(), "k", "swal('Already Added!', 'Item is already in the cart!', 'error');", true);
+                                }
+                            }
+                            else
+                            {
+                                ScriptManager.RegisterStartupScript(this, this.GetType(), "k", "swal('Not Enough Quantity!', 'Current Quantity is : " + cq + "', 'error');", true);
+                            }
+                        }
+                    }
+                }
+            }
+            else
+            {
+                Response.Redirect("login.aspx");
+            }
         }
     }
 }

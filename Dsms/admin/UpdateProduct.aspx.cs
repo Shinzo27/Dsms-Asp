@@ -31,15 +31,15 @@ namespace Dsms.admin
                 SqlDataReader dr = com.ExecuteReader();
                 if(dr.Read() == true)
                 {
-                    txtPname.Text = dr.GetValue(1).ToString();
-                    txtPrice.Text = dr.GetValue(4).ToString();
+                    lblPname.Text = "Current Name : " + dr.GetValue(1).ToString();
+                    lblPrice.Text = "Current Price : " + dr.GetValue(4).ToString();
                     ddCategory.SelectedValue = dr.GetValue(2).ToString();
                 }
                 dr.Close();
             }
             else
             {
-                Response.Redirect("../index.aspx");
+                Response.Redirect("../login.aspx");
             }
 
         }

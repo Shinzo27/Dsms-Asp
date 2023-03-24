@@ -33,6 +33,15 @@ namespace Dsms.admin
         protected global::System.Web.UI.WebControls.TextBox txtPname;
 
         /// <summary>
+        /// lblPname control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblPname;
+
+        /// <summary>
         /// ddCategory control.
         /// </summary>
         /// <remarks>
@@ -67,6 +76,15 @@ namespace Dsms.admin
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtPrice;
+
+        /// <summary>
+        /// lblPrice control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblPrice;
 
         /// <summary>
         /// btnSubmit control.

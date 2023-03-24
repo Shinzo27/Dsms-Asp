@@ -28,7 +28,7 @@ namespace Dsms.admin
                 string delete = "delete from tblProduct where pid='" + id + "'";
                 SqlCommand com = new SqlCommand(delete, con);
                 com.ExecuteNonQuery();
-                Response.Redirect("index.aspx");
+                Response.Redirect("product.aspx");
             }
             else
             {

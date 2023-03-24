@@ -29,5 +29,10 @@ namespace Dsms.admin
             Session["adminloggedin"] = null;
             Response.Redirect("../index.aspx");
         }
+
+        protected void btnAddproduct_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("addproduct.aspx");
+        }
     }
 }

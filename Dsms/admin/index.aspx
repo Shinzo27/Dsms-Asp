@@ -163,32 +163,7 @@
                     </h4>
                     <br />
                 </div>
-                <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False" CellPadding="4" DataSourceID="SqlDataSource1" ForeColor="#333333" GridLines="None" Width="1134px" DataKeyNames="pid">
-                    <AlternatingRowStyle BackColor="White" />
-                    <Columns>
-                        <asp:BoundField DataField="pid" HeaderText="pid" InsertVisible="False" ReadOnly="True" SortExpression="pid" />
-                        <asp:BoundField DataField="pname" HeaderText="pname" SortExpression="pname" />
-                        <asp:BoundField DataField="category" HeaderText="category" SortExpression="category" />
-                        <asp:BoundField DataField="image" HeaderText="image" SortExpression="image" />
-                        <asp:BoundField DataField="price" HeaderText="price" SortExpression="price" />
-                        <asp:BoundField DataField="date" HeaderText="date" SortExpression="date" />
-                        
-                        <asp:HyperLinkField DataNavigateUrlFields="pid" DataNavigateUrlFormatString="UpdateProduct.aspx?pid={0}" HeaderText="Edit" Text="Edit" />
-                        <asp:HyperLinkField DataNavigateUrlFields="pid" DataNavigateUrlFormatString="Deleteproduct.aspx?pid={0}" HeaderText="delete" Text="Delete" />
-                        
-                    </Columns>
-                    <EditRowStyle BackColor="#2461BF" />
-                    <FooterStyle BackColor="#507CD1" Font-Bold="True" ForeColor="White" />
-                    <HeaderStyle BackColor="#507CD1" Font-Bold="True" ForeColor="White" />
-                    <PagerStyle BackColor="#2461BF" ForeColor="White" HorizontalAlign="Center" />
-                    <RowStyle BackColor="#EFF3FB" />
-                    <SelectedRowStyle BackColor="#D1DDF1" Font-Bold="True" ForeColor="#333333" />
-                    <SortedAscendingCellStyle BackColor="#F5F7FB" />
-                    <SortedAscendingHeaderStyle BackColor="#6D95E1" />
-                    <SortedDescendingCellStyle BackColor="#E9EBEF" />
-                    <SortedDescendingHeaderStyle BackColor="#4870BE" />
-                </asp:GridView>
-                <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:dbDsmsConnectionString %>" SelectCommand="SELECT * FROM [tblProduct]"></asp:SqlDataSource>
+                
             </div>
     </div>
   </main>
