@@ -1,5 +1,7 @@
 ﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="index.aspx.cs" Inherits="Dsms.admin.index" %>
 
+<%@ Register assembly="Microsoft.ReportViewer.WebForms" namespace="Microsoft.Reporting.WebForms" tagprefix="rsweb" %>
+
 <!DOCTYPE html>
 <html lang="en" xmlns="http://www.w3.org/1999/xhtml">
 
@@ -158,14 +160,37 @@
       </div> -->
         <div class="row">
                 <div class="col-md-12">
-                    <h4>Products
-                        <a href="addproduct.aspx" class="btn btn-primary float-right" style="float:right;">Add Product</a>
+                    <h4>Products</h4>
+                    <h4>
+                        <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False" CellPadding="4" DataKeyNames="pid" DataSourceID="SqlDataSource1" ForeColor="#333333" GridLines="None" Height="289px" Width="1097px">
+                            <AlternatingRowStyle BackColor="White" />
+                            <Columns>
+                                <asp:BoundField DataField="pid" HeaderText="pid" InsertVisible="False" ReadOnly="True" SortExpression="pid" />
+                                <asp:BoundField DataField="pname" HeaderText="pname" SortExpression="pname" />
+                                <asp:BoundField DataField="category" HeaderText="category" SortExpression="category" />
+                                <asp:BoundField DataField="image" HeaderText="image" SortExpression="image" />
+                                <asp:BoundField DataField="price" HeaderText="price" SortExpression="price" />
+                                <asp:BoundField DataField="date" HeaderText="date" SortExpression="date" />
+                            </Columns>
+                            <EditRowStyle BackColor="#2461BF" Font-Size="Medium" />
+                            <FooterStyle BackColor="#507CD1" Font-Bold="True" ForeColor="White" />
+                            <HeaderStyle BackColor="#507CD1" Font-Bold="True" Font-Size="Medium" ForeColor="White" />
+                            <PagerStyle BackColor="#2461BF" ForeColor="White" HorizontalAlign="Center" />
+                            <RowStyle BackColor="#EFF3FB" Font-Size="Medium" />
+                            <SelectedRowStyle BackColor="#D1DDF1" Font-Bold="True" ForeColor="#333333" />
+                            <SortedAscendingCellStyle BackColor="#F5F7FB" />
+                            <SortedAscendingHeaderStyle BackColor="#6D95E1" />
+                            <SortedDescendingCellStyle BackColor="#E9EBEF" />
+                            <SortedDescendingHeaderStyle BackColor="#4870BE" />
+                        </asp:GridView>
+                        <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:dbDsmsConnectionString %>" SelectCommand="SELECT * FROM [tblProduct]"></asp:SqlDataSource>
                     </h4>
                     <br />
                 </div>
                 
             </div>
     </div>
+
   </main>
   <script src="./js/bootstrap.bundle.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/chart.js@3.0.2/dist/chart.min.js"></script>

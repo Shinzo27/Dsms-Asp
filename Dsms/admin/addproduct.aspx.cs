@@ -47,7 +47,7 @@ namespace Dsms.admin
                    string stock = "insert into tblStock(pname,stock) values ('" + txtPname.Text + "','" + txtStock.Text + "')";
                    SqlCommand stkquery = new SqlCommand(stock, con);
                    stkquery.ExecuteNonQuery();
-                   ScriptManager.RegisterStartupScript(this, this.GetType(), "k", "swal('Success!', 'Product Added Successfully!', 'success').then(function() {window.location.href = 'index.aspx'}); ", true);
+                   ScriptManager.RegisterStartupScript(this, this.GetType(), "k", "swal('Success!', 'Product Added Successfully!', 'success').then(function() {window.location.href = 'product.aspx'}); ", true);
                    con.Close();
             }
         }

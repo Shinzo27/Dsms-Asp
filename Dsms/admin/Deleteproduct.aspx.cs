@@ -32,7 +32,7 @@ namespace Dsms.admin
             }
             else
             {
-                Response.Redirect("../index.aspx");
+                Response.Redirect("../login.aspx");
             }
         }
     }

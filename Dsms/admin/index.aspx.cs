@@ -20,7 +20,7 @@ namespace Dsms.admin
             Response.AddHeader("Pragma", "no-cache");
             if (Session["adminloggedin"] == null)
             {
-                Response.Redirect("../index.aspx");
+                Response.Redirect("../login.aspx");
             }
         }
 
