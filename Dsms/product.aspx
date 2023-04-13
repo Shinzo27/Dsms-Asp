@@ -35,9 +35,12 @@
                                <h3><%# Eval("pname") %></h3>
                                <br>
                                 <asp:TextBox ID="txtQuantity1" runat="server" Height="45px" Width="99px" placeholder="Enter Quantity"></asp:TextBox>
-                                <select name="weight" required="" style="width: 70px; height: 28px; font-size: 15px;">
-                                    <option value="250gm">250gms</option>
-                                </select><asp:Label ID="pid" runat="server" Text='<%# Eval("pid") %>' Visible="False"></asp:Label>
+                                <asp:DropDownList ID="ddPtype" runat="server">
+                                    <asp:ListItem>250gm</asp:ListItem>
+                                    <asp:ListItem>500gm</asp:ListItem>
+                                    <asp:ListItem>1kg</asp:ListItem>
+                                </asp:DropDownList>
+                                <asp:Label ID="pid" runat="server" Text='<%# Eval("pid") %>' Visible="False"></asp:Label>
                                 <br>
                                 <br>
                                 <asp:Button ID="btnAddtocart" runat="server" CssClass="btn" Text="Add to cart" Width="143px" Height="35px" />
@@ -74,9 +77,12 @@
                                <h3><%# Eval("pname") %></h3>
                                <br>
                                 <asp:TextBox ID="txtQuantity2" runat="server" Height="45px" Width="99px" placeholder="Enter Quantity"></asp:TextBox>
-                                <select name="weight" required="" style="width: 70px; height: 28px; font-size: 15px;">
-                                    <option value="250gm">250gms</option>
-                                </select><asp:Label ID="pid" runat="server" Text='<%# Eval("pid") %>' Visible="False"></asp:Label>
+                                <asp:DropDownList ID="ddPtype" runat="server">
+                                    <asp:ListItem>250gm</asp:ListItem>
+                                    <asp:ListItem>500gm</asp:ListItem>
+                                    <asp:ListItem>1kg</asp:ListItem>
+                                </asp:DropDownList>
+                                <asp:Label ID="pid" runat="server" Text='<%# Eval("pid") %>' Visible="False"></asp:Label>
                                 <br>
                                 <br>
                                 <asp:Button ID="btnAddtocart" runat="server" CssClass="btn" Text="Add to cart" Width="143px" Height="35px" />
@@ -114,9 +120,12 @@
                                <h3><%# Eval("pname") %></h3>
                                <br>
                                 <asp:TextBox ID="txtQuantity3" runat="server" Height="45px" Width="99px" placeholder="Enter Quantity"></asp:TextBox>
-                                <select name="weight" required="" style="width: 70px; height: 28px; font-size: 15px;">
-                                    <option value="250gm">250gms</option>
-                                </select><asp:Label ID="pid" runat="server" Text='<%# Eval("pid") %>' Visible="False"></asp:Label>
+                                <asp:DropDownList ID="ddPtype" runat="server">
+                                    <asp:ListItem>250gm</asp:ListItem>
+                                    <asp:ListItem>500gm</asp:ListItem>
+                                    <asp:ListItem>1kg</asp:ListItem>
+                                </asp:DropDownList>
+                                <asp:Label ID="pid" runat="server" Text='<%# Eval("pid") %>' Visible="False"></asp:Label>
                                 <br>
                                 <br>
                                 <asp:Button ID="btnAddtocart" runat="server" CssClass="btn" Text="Add to cart" Width="143px" Height="35px" />
@@ -153,9 +162,12 @@
                                <h3><%# Eval("pname") %></h3>
                                <br>
                                 <asp:TextBox ID="txtQuantity4" runat="server" Height="45px" Width="99px" placeholder="Enter Quantity"></asp:TextBox>
-                                <select name="weight" required="" style="width: 70px; height: 28px; font-size: 15px;">
-                                    <option value="250gm">250gms</option>
-                                </select><asp:Label ID="pid" runat="server" Text='<%# Eval("pid") %>' Visible="False"></asp:Label>
+                                <asp:DropDownList ID="ddPtype" runat="server">
+                                    <asp:ListItem>250gm</asp:ListItem>
+                                    <asp:ListItem>500gm</asp:ListItem>
+                                    <asp:ListItem>1kg</asp:ListItem>
+                                </asp:DropDownList>
+                                <asp:Label ID="pid" runat="server" Text='<%# Eval("pid") %>' Visible="False"></asp:Label>
                                 <br>
                                 <br>
                                 <asp:Button ID="btnAddtocart" runat="server" CssClass="btn" Text="Add to cart" Width="143px" Height="35px" />
@@ -192,9 +204,12 @@
                                <h3><%# Eval("pname") %></h3>
                                <br>
                                 <asp:TextBox ID="txtQuantity5" runat="server" Height="45px" Width="99px" placeholder="Enter Quantity"></asp:TextBox>
-                                <select name="weight" required="" style="width: 70px; height: 28px; font-size: 15px;">
-                                    <option value="250gm">250gms</option>
-                                </select><asp:Label ID="pid" runat="server" Text='<%# Eval("pid") %>' Visible="False"></asp:Label>
+                                <asp:DropDownList ID="ddPtype" runat="server">
+                                    <asp:ListItem>250gm</asp:ListItem>
+                                    <asp:ListItem>500gm</asp:ListItem>
+                                    <asp:ListItem>1kg</asp:ListItem>
+                                </asp:DropDownList>
+                                <asp:Label ID="pid" runat="server" Text='<%# Eval("pid") %>' Visible="False"></asp:Label>
                                 <br>
                                 <br>
                                 <asp:Button ID="btnAddtocart" runat="server" CssClass="btn" Text="Add to cart" Width="143px" Height="35px" />

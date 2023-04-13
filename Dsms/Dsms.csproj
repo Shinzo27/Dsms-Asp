@@ -69,6 +69,12 @@
     <Reference Include="Microsoft.SqlServer.Types, Version=16.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.SqlServer.Types.160.1000.6\lib\net462\Microsoft.SqlServer.Types.dll</HintPath>
     </Reference>
+    <Reference Include="Newtonsoft.Json, Version=11.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.11.0.2\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="Razorpay, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Razorpay.3.0.2\lib\net45\Razorpay.dll</HintPath>
+    </Reference>
     <Reference Include="System.Web.DynamicData" />
     <Reference Include="System.Web.Entity" />
     <Reference Include="System.Web.ApplicationServices" />
@@ -91,6 +97,7 @@
   <ItemGroup>
     <Content Include="admin\addproduct.aspx" />
     <Content Include="admin\css\addproduct.css" />
+    <Content Include="admin\css\product-bootstrap.css" />
     <Content Include="admin\css\bootstrap.min.css" />
     <Content Include="admin\css\dataTables.bootstrap5.min.css" />
     <Content Include="admin\css\style.css" />
@@ -2203,6 +2210,7 @@
     <Content Include="images\logo.png" />
     <Content Include="images\qrcode.png" />
     <Content Include="images\undraw_appreciate_it_qnkk.svg" />
+    <Content Include="images\undraw_experience_design_re_dmqq.svg" />
     <Content Include="images\undraw_predictive_analytics_re_wxt8.svg" />
     <Content Include="images\undraw_reminder_re_fe15.svg" />
     <Content Include="images\undraw_showing_support_re_5f2v.svg" />
@@ -2218,6 +2226,8 @@
     <Content Include="newpassword.aspx" />
     <Content Include="profile.aspx" />
     <Content Include="cart.aspx" />
+    <Content Include="userdetails.aspx" />
+    <Content Include="payment.aspx" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="admin\addproduct.aspx.cs">
@@ -2261,11 +2271,6 @@
     </Compile>
     <Compile Include="admin\UpdateProduct.aspx.designer.cs">
       <DependentUpon>UpdateProduct.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="dbDsmsDataSet.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>dbDsmsDataSet.xsd</DependentUpon>
     </Compile>
     <Compile Include="Header.Master.cs">
       <DependentUpon>Header.Master</DependentUpon>
@@ -2331,6 +2336,20 @@
     <Compile Include="cart.aspx.designer.cs">
       <DependentUpon>cart.aspx</DependentUpon>
     </Compile>
+    <Compile Include="userdetails.aspx.cs">
+      <DependentUpon>userdetails.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="userdetails.aspx.designer.cs">
+      <DependentUpon>userdetails.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="payment.aspx.cs">
+      <DependentUpon>payment.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="payment.aspx.designer.cs">
+      <DependentUpon>payment.aspx</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <Content Include="Fontawesome\less\brands.less" />
@@ -2390,17 +2409,6 @@
     <Content Include="admin\css\bootstrap.min.css.map" />
     <Content Include="admin\js\bootstrap.bundle.min.js.map" />
     <Content Include="assets\dbDsms.bak" />
-    <Content Include="dbDsmsDataSet.xsc">
-      <DependentUpon>dbDsmsDataSet.xsd</DependentUpon>
-    </Content>
-    <None Include="dbDsmsDataSet.xsd">
-      <Generator>MSDataSetGenerator</Generator>
-      <LastGenOutput>dbDsmsDataSet.Designer.cs</LastGenOutput>
-      <SubType>Designer</SubType>
-    </None>
-    <Content Include="dbDsmsDataSet.xss">
-      <DependentUpon>dbDsmsDataSet.xsd</DependentUpon>
-    </Content>
     <None Include="packages.config" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>

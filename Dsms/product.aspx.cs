@@ -25,6 +25,8 @@ namespace Dsms
                 con.Open();
                 int uid = (int)Session["uid"];
                 TextBox txt = (TextBox)(e.Item.FindControl("txtQuantity1"));
+                DropDownList ddPtype = (DropDownList)(e.Item.FindControl("ddPtype"));
+
                 if (txt.Text.Equals(""))
                 {
                     ScriptManager.RegisterStartupScript(this, this.GetType(), "k", "swal('Enter Quantity!', 'Please mention quantity', 'error');", true);
@@ -41,22 +43,50 @@ namespace Dsms
                         SqlDataReader checkdr = check.ExecuteReader();
                         if (checkdr.Read() == true)
                         {
-                            float cq = (float)Convert.ToDouble(checkdr.GetValue(2).ToString());
                             int q = Convert.ToInt32(txt.Text);
-                            if (cq > q)
+                            string ptype = ddPtype.SelectedItem.Text.ToString();
+                            double kg = 0;
+                            if(ptype == "250gm")
+                            {
+                                kg = q * 0.25;
+                            }
+                            else if(ptype == "500gm")
+                            {
+                                kg = q * 0.5;
+                            }
+                            else if(ptype == "1kg")
+                            {
+                                kg = q * 1;
+                            }
+
+                            float cq = (float)Convert.ToDouble(checkdr.GetValue(2).ToString());
+                            if (cq > kg)
                             {
                                 string pname = dr.GetValue(1).ToString();
-                                float price = Convert.ToInt32(dr.GetValue(4));
+                                float kgp = Convert.ToInt32(dr.GetValue(4));
+                                float price = 0;
+                                if(ptype == "250gm")
+                                {
+                                    price = kgp / 4;
+                                }
+                                else if(ptype == "500gm")
+                                {
+                                    price = kgp / 2;
+                                }
+                                else if(ptype == "1kg")
+                                {
+                                    price = kgp / 1;
+                                }
                                 float total = q * price;
 
-                                string select = "select * from tblCart where pname='" + dr.GetValue(1).ToString() + "' and uid='" + uid + "'";
+                                string select = "select * from tblCart where pname='" + dr.GetValue(1).ToString() + "' and uid='" + uid + "' and ptype='"+ptype+"'";
                                 SqlCommand sel = new SqlCommand(select, con);
                                 dr.Close();
                                 SqlDataReader reader = sel.ExecuteReader();
                                 if (reader.Read() != true)
                                 {
                                     reader.Close();
-                                    string insert = "insert into tblCart(uid,pname,price,quantity,total,date) values (" + uid + ",'" + pname + "','" + price + "','" + q + "','" + total + "',GETDATE())";
+                                    string insert = "insert into tblCart(uid,pname,price,quantity,total,date,ptype) values (" + uid + ",'" + pname + "','" + price + "','" + q + "','" + total + "',GETDATE(), '"+ptype+"')";
                                     SqlCommand ins = new SqlCommand(insert, con);
                                     int i = ins.ExecuteNonQuery();
                                     if (i > 0)

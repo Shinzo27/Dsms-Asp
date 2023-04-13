@@ -7,7 +7,7 @@
   <meta charset="UTF-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <link rel="stylesheet" href="css/bootstrap.min.css" />
+  <link rel="stylesheet" href="css/product-bootstrap.css" />
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css" />
   <link rel="stylesheet" href="css/dataTables.bootstrap5.min.css"/>
   <link rel="stylesheet" href="css/style.css"/>
@@ -85,28 +85,29 @@
                         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                         <asp:Label ID="Label1" runat="server" Text="Sales" Font-Bold="True" Font-Italic="False" Font-Names="Calibri" Font-Size="XX-Large"></asp:Label>&nbsp;
                 </div>
-                    <asp:GridView ID="GridView1" runat="server" Height="185px" Width="1134px" AutoGenerateColumns="False" CellPadding="4" DataKeyNames="pid" DataSourceID="SqlDataSource1" ForeColor="#333333" GridLines="None" BorderColor="#507CD1" BorderStyle="Dotted" CssClass="auto-style1">
-                        <AlternatingRowStyle BackColor="White" />
-                        <Columns>
-                            <asp:BoundField DataField="pid" HeaderText="pid" InsertVisible="False" ReadOnly="True" SortExpression="pid" />
-                            <asp:BoundField DataField="pname" HeaderText="pname" SortExpression="pname" />
-                            <asp:BoundField DataField="category" HeaderText="category" SortExpression="category" />
-                            <asp:BoundField DataField="image" HeaderText="image" SortExpression="image" />
-                            <asp:BoundField DataField="price" HeaderText="price" SortExpression="price" />
-                            <asp:BoundField DataField="date" HeaderText="date" SortExpression="date" />
-                        </Columns>
-                        <EditRowStyle BackColor="#2461BF" />
-                        <FooterStyle BackColor="#507CD1" Font-Bold="True" ForeColor="White" />
-                        <HeaderStyle BackColor="#507CD1" Font-Bold="True" ForeColor="White" HorizontalAlign="Center" VerticalAlign="Middle" />
-                        <PagerStyle BackColor="#2461BF" ForeColor="White" HorizontalAlign="Center" />
-                        <RowStyle BackColor="#EFF3FB" HorizontalAlign="Center" VerticalAlign="Middle" />
-                        <SelectedRowStyle BackColor="#D1DDF1" Font-Bold="True" ForeColor="#333333" />
-                        <SortedAscendingCellStyle BackColor="#F5F7FB" />
-                        <SortedAscendingHeaderStyle BackColor="#6D95E1" />
-                        <SortedDescendingCellStyle BackColor="#E9EBEF" />
-                        <SortedDescendingHeaderStyle BackColor="#4870BE" />
-                      </asp:GridView>
-                      <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:dbDsmsConnectionString %>" SelectCommand="SELECT * FROM [tblProduct]"></asp:SqlDataSource>
+            <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False" CellPadding="4" DataKeyNames="onum" DataSourceID="SqlDataSource1" ForeColor="#333333" GridLines="None" Width="1121px">
+                <AlternatingRowStyle BackColor="White" />
+                <Columns>
+                    <asp:BoundField DataField="onum" HeaderText="Order ID" InsertVisible="False" ReadOnly="True" SortExpression="onum" />
+                    <asp:BoundField DataField="uname" HeaderText="Name" SortExpression="uname" />
+                    <asp:BoundField DataField="email" HeaderText="Email" SortExpression="email" />
+                    <asp:BoundField DataField="address" HeaderText="Address" SortExpression="address" />
+                    <asp:BoundField DataField="contact" HeaderText="Contact" SortExpression="contact" />
+                    <asp:BoundField DataField="total" HeaderText="Total" SortExpression="total" />
+                    <asp:BoundField DataField="date" HeaderText="Date" SortExpression="date" />
+                </Columns>
+                <EditRowStyle BackColor="#2461BF" />
+                <FooterStyle BackColor="#507CD1" Font-Bold="True" ForeColor="White" />
+                <HeaderStyle BackColor="#507CD1" Font-Bold="True" ForeColor="White" />
+                <PagerStyle BackColor="#2461BF" ForeColor="White" HorizontalAlign="Center" />
+                <RowStyle BackColor="#EFF3FB" />
+                <SelectedRowStyle BackColor="#D1DDF1" Font-Bold="True" ForeColor="#333333" />
+                <SortedAscendingCellStyle BackColor="#F5F7FB" />
+                <SortedAscendingHeaderStyle BackColor="#6D95E1" />
+                <SortedDescendingCellStyle BackColor="#E9EBEF" />
+                <SortedDescendingHeaderStyle BackColor="#4870BE" />
+                </asp:GridView>
+                <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="Data Source=LAPTOP-B85NU0HM\SQLEXPRESS;Initial Catalog=dbDsms;Integrated Security=True;MultipleActiveResultSets=True" ProviderName="System.Data.SqlClient" SelectCommand="SELECT * FROM [tblOrderDetails]"></asp:SqlDataSource>
         </div>
   <script src="./js/bootstrap.bundle.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/chart.js@3.0.2/dist/chart.min.js"></script>
