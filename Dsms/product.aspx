@@ -28,7 +28,7 @@
                         </div>
                         <div class="price">₹750/1kg</div>
                     </div>--%>
-                   <asp:DataList ID="DataList1" runat="server" DataKeyField="pid" DataSourceID="SqlDataSource1" RepeatDirection="Horizontal" OnItemCommand="DataList1_ItemCommand">
+                   <asp:DataList ID="DataList1" runat="server" CellPadding="5" DataKeyField="pid" DataSourceID="SqlDataSource1" RepeatDirection="Horizontal" OnItemCommand="DataList1_ItemCommand" OnItemDataBound="DataList1_ItemDataBound">
                        <ItemTemplate>
                             <div class="box">
                             <div class="info">
@@ -43,6 +43,7 @@
                                 <asp:Label ID="pid" runat="server" Text='<%# Eval("pid") %>' Visible="False"></asp:Label>
                                 <br>
                                 <br>
+                                <asp:Label ID="lblOS" runat="server" Text="Out of stock!" Font-Size="Large" Visible="False" CssClass="btn"></asp:Label>
                                 <asp:Button ID="btnAddtocart" runat="server" CssClass="btn" Text="Add to cart" Width="143px" Height="35px" />
                                 <br>
 
@@ -52,6 +53,7 @@
                             <div class="price">₹ <%# Eval("price") %>/1kg</div>
                         </div>
                        </ItemTemplate>
+
                    </asp:DataList>
                     <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:dbDsmsConnectionString %>" SelectCommand="SELECT * FROM [tblProduct] WHERE ([category] = @category)">
                         <SelectParameters>
@@ -75,9 +77,10 @@
                             <div class="box">
                             <div class="info">
                                <h3><%# Eval("pname") %></h3>
+
                                <br>
                                 <asp:TextBox ID="txtQuantity2" runat="server" Height="45px" Width="99px" placeholder="Enter Quantity"></asp:TextBox>
-                                <asp:DropDownList ID="ddPtype" runat="server">
+                                <asp:DropDownList ID="ddPtype2" runat="server">
                                     <asp:ListItem>250gm</asp:ListItem>
                                     <asp:ListItem>500gm</asp:ListItem>
                                     <asp:ListItem>1kg</asp:ListItem>
@@ -85,6 +88,7 @@
                                 <asp:Label ID="pid" runat="server" Text='<%# Eval("pid") %>' Visible="False"></asp:Label>
                                 <br>
                                 <br>
+                                <asp:Label ID="Label1" runat="server" Text="Out of stock!" Font-Size="Large" Visible="false"></asp:Label>
                                 <asp:Button ID="btnAddtocart" runat="server" CssClass="btn" Text="Add to cart" Width="143px" Height="35px" />
                                 <br>
 
@@ -128,13 +132,14 @@
                                 <asp:Label ID="pid" runat="server" Text='<%# Eval("pid") %>' Visible="False"></asp:Label>
                                 <br>
                                 <br>
+                                <asp:Label ID="Label1" runat="server" Text="Out of stock!" Font-Size="Large" Visible="false"></asp:Label>
                                 <asp:Button ID="btnAddtocart" runat="server" CssClass="btn" Text="Add to cart" Width="143px" Height="35px" />
                                 <br>
 
                             </div>
                             <div class="img"><img src="<%# Eval("image") %>" style="float: right; width: 100px; height: 100px;" >
                             </div>
-                            <div class="price">₹ <%# Eval("price") %>/1kg</div>
+                            <div class="price">₹ <%# Eval("price") %>/Pkt</div>
                         </div>
                        </ItemTemplate>
                    </asp:DataList>
@@ -170,13 +175,14 @@
                                 <asp:Label ID="pid" runat="server" Text='<%# Eval("pid") %>' Visible="False"></asp:Label>
                                 <br>
                                 <br>
+                                <asp:Label ID="Label1" runat="server" Text="Out of stock!" Font-Size="Large" Visible="false"></asp:Label>
                                 <asp:Button ID="btnAddtocart" runat="server" CssClass="btn" Text="Add to cart" Width="143px" Height="35px" />
                                 <br>
 
                             </div>
                             <div class="img"><img src="<%# Eval("image") %>" style="float: right; width: 100px; height: 100px;" >
                             </div>
-                            <div class="price">₹ <%# Eval("price") %>/1kg</div>
+                            <div class="price">₹ <%# Eval("price") %>/Pkt</div>
                         </div>
                        </ItemTemplate>
                    </asp:DataList>
@@ -212,13 +218,14 @@
                                 <asp:Label ID="pid" runat="server" Text='<%# Eval("pid") %>' Visible="False"></asp:Label>
                                 <br>
                                 <br>
+                                <asp:Label ID="Label1" runat="server" Text="Out of stock!" Font-Size="Large" Visible="false"></asp:Label>
                                 <asp:Button ID="btnAddtocart" runat="server" CssClass="btn" Text="Add to cart" Width="143px" Height="35px" />
                                 <br>
 
                             </div>
                             <div class="img"><img src="<%# Eval("image") %>" style="float: right; width: 100px; height: 100px;" >
                             </div>
-                            <div class="price">₹ <%# Eval("price") %>/1kg</div>
+                            <div class="price">₹ <%# Eval("price") %>/Pcs</div>
                         </div>
                        </ItemTemplate>
                    </asp:DataList>
