@@ -1,0 +1,84 @@
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="addimage.aspx.cs" Inherits="Dsms.admin.addimage" %>
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+    <meta charset="UTF-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Patel's Dryfruit and Masala</title>
+
+    <!-- font awesome cdn link  -->
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous"/>
+
+    <link rel="stylesheet" href="css/addproduct.css" type="text/css" media="all" />
+
+
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"/>
+
+    <link rel="stylesheet" href="https://unpkg.com/swiper@7/swiper-bundle.min.css" />
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/lightgallery-js/1.4.0/css/lightgallery.min.css"/>
+
+    <!-- custom css file link  -->
+    <link rel="stylesheet" href="..\css\style.css"/>
+
+    <link rel="shortcut icon" type="x-icon" href="images\icon.ico"/>
+
+    <link href="//fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet"/>
+
+    <!--/Style-CSS -->
+
+    <!--//Style-CSS -->
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+    <script src="https://kit.fontawesome.com/af562a2a63.js" crossorigin="anonymous"></script>
+</head>
+<body>
+    <form id="form1" runat="server">
+        <div>
+            <div>
+            <section class="w3l-mockup-form">
+        <div class="container">
+            <!-- /form -->
+            <div class="workinghny-form-grid">
+                <div class="main-mockup">
+                    <div class="w3l_form align-self">
+                        <div class="left_grid_info">
+                            <img src="images\undraw_experience_design_re_ca7l.svg" alt=""/>
+                        </div>
+                    </div>
+                    <div class="content-wthree">
+                        <h2>Add Image</h2>
+                        <p>Select proper image!</p>
+                        <br />
+                        <br />
+                        <asp:FileUpload ID="FileUpload1" runat="server" />
+                        <br />
+                        <br />
+                        <asp:Button ID="btnSubmit" runat="server" BackColor="RoyalBlue" CssClass="btn" ForeColor="White" Text="Submit" Width="99px" OnClick="btnSubmit_Click" />
+                    </div>
+                </div>
+            </div>
+            <!-- //form -->
+        </div>
+    </section>
+    <!-- //form section start -->
+
+    <script src="js/jquery.min.js"></script>
+    <script>
+        $(document).ready(function (c) {
+            $('.alert-close').on('click', function (c) {
+                $('.main-mockup').fadeOut('slow', function (c) {
+                    $('.main-mockup').remove();
+                });
+            });
+        });
+    </script>
+        </div>
+        </div>
+    </form>
+</body>
+</html>

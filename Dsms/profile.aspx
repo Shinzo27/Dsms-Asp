@@ -26,7 +26,9 @@
                         <label style="font-size: large;">Change Password: </label>
                         <asp:TextBox ID="txtOldpass" runat="server" CssClass="email" placeholder="Enter Old Password" TextMode="Password"></asp:TextBox>
                         <asp:TextBox ID="txtNewpass" runat="server" CssClass="email" placeholder="Enter New Password" TextMode="Password"></asp:TextBox>
-                        <asp:Button ID="Button1" runat="server" Text="Change Password" BackColor="#0043A2" Font-Bold="True" Font-Size="Large" ForeColor="White" OnClick="Button1_Click" />
+                        <asp:Button ID="Button1" runat="server" Text="Change Password" BackColor="#0043A2" Font-Bold="True" Font-Size="Large" ForeColor="White" OnClick="Button1_Click" /><br />
+                        <br />
+                        <asp:Button ID="Button2" runat="server" Text="View Orders" BackColor="#0043A2" Font-Bold="True" Font-Size="Large" ForeColor="White" OnClick="Button2_Click" />
                     </div>
                 </div>
             </div>
@@ -78,33 +80,6 @@
     
         <center>
 
-            <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False" CellPadding="4" DataKeyNames="onum" DataSourceID="SqlDataSource1" ForeColor="#333333" GridLines="None" Height="252px" Width="916px">
-                <AlternatingRowStyle BackColor="White" />
-                <Columns>
-                    <asp:BoundField DataField="onum" HeaderText="Order Id" InsertVisible="False" ReadOnly="True" SortExpression="onum" />
-                    <asp:BoundField DataField="uname" HeaderText="Name" SortExpression="uname" />
-                    <asp:BoundField DataField="email" HeaderText="Email" SortExpression="email" />
-                    <asp:BoundField DataField="address" HeaderText="Address" SortExpression="address" />
-                    <asp:BoundField DataField="contact" HeaderText="Contact" SortExpression="contact" />
-                    <asp:BoundField DataField="total" HeaderText="Total" SortExpression="total" />
-                    <asp:BoundField DataField="date" HeaderText="Date" SortExpression="date" />
-                </Columns>
-                <EditRowStyle BackColor="#2461BF" BorderStyle="Dotted" />
-                <FooterStyle BackColor="#507CD1" Font-Bold="True" ForeColor="White" />
-                <HeaderStyle BackColor="#507CD1" Font-Bold="True" Font-Size="Large" ForeColor="White" HorizontalAlign="Center" VerticalAlign="Middle" />
-                <PagerStyle BackColor="#2461BF" ForeColor="White" HorizontalAlign="Center" />
-                <RowStyle BackColor="#EFF3FB" Font-Size="Medium" BorderColor="#4F7BCF" BorderStyle="Dotted" HorizontalAlign="Center" VerticalAlign="Middle" />
-                <SelectedRowStyle BackColor="#D1DDF1" Font-Bold="True" ForeColor="#333333" />
-                <SortedAscendingCellStyle BackColor="#F5F7FB" />
-                <SortedAscendingHeaderStyle BackColor="#6D95E1" />
-                <SortedDescendingCellStyle BackColor="#E9EBEF" />
-                <SortedDescendingHeaderStyle BackColor="#4870BE" />
-            </asp:GridView>
-            <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:dbDsmsConnectionString %>" SelectCommand="SELECT * FROM [tblOrderDetails] WHERE ([uname] = @uname)">
-                <SelectParameters>
-                    <asp:SessionParameter Name="uname" SessionField="username" Type="String" />
-                </SelectParameters>
-            </asp:SqlDataSource>
             <br />
             <br />
             <br />

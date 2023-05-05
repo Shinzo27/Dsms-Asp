@@ -1,5 +1,6 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Header.Master" AutoEventWireup="true" CodeBehind="userdetails.aspx.cs" Inherits="Dsms.WebForm9" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
     <link href="Css/loginstyle.css" rel="stylesheet" />
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceholder1" runat="server">
@@ -19,11 +20,16 @@
                         <br />
                             <asp:TextBox ID="txtEmail" runat="server" class="email" CssClass="inputBox" placeholder="Enter your Email" style="margin-top: 5px;" Width="300px"></asp:TextBox>
                             <asp:TextBox ID="txtContact" runat="server" class="email" CssClass="inputBox" placeholder="Enter your Contact" style="margin-top: 5px;" Width="300px"></asp:TextBox>
+                            <asp:TextBox ID="txtPin" runat="server" class="email" CssClass="inputBox" placeholder="Enter your Pincode" style="margin-top: 5px;" Width="300px"></asp:TextBox>                            
                             <asp:TextBox ID="txtAddress" runat="server" class="email" CssClass="inputBox" placeholder="Enter your Address" style="margin-top: 5px;" Width="300px" Height="48px"></asp:TextBox>
                             <asp:Label ID="lbl" runat="server" class="email" CssClass="inputBox" text="Total Amount :" style="margin-top: 5px;" Width="128px" Height="48px" Font-Size="Large"></asp:Label>
                             <asp:Label ID="lblTotal" runat="server" class="email" CssClass="inputBox" Font-Size="Large" ></asp:Label>
                             <br />
-                        <asp:Button ID="Button1" runat="server" Text="Save Details" BackColor="#0047AB" CssClass="btn" Font-Size="Large" ForeColor="White" OnClick="Button1_Click" />
+                        <br />
+                        <asp:Label ID="Label1" runat="server" class="email" CssClass="inputBox" Font-Size="Large" Visible="false"></asp:Label>
+                            <br />
+                            <asp:Button ID="Button2" runat="server" Text="Check Availability" BackColor="#0047AB" CssClass="btn" Font-Size="Large" ForeColor="White" OnClick="Button2_Click" />
+ 
                             <br />
                             
                            <button class="btn btn-primary" id="rzp-button1" style="width:276px;">Proceed to checkout</button>

@@ -6,12 +6,14 @@ using System.Web.UI;
 using System.Web.UI.WebControls;
 using Razorpay.Api;
 using Newtonsoft.Json;
+using System.Data.SqlClient;
+using System.Configuration;
 
 namespace Dsms
 {
     public partial class WebForm9 : System.Web.UI.Page
     {
-        
+        SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["dbconnection"].ConnectionString);
         public double total;
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -35,11 +37,26 @@ namespace Dsms
 
         }
 
-        protected void Button1_Click(object sender, EventArgs e)
+        protected void Button2_Click(object sender, EventArgs e)
         {
-            Session["email"] = txtEmail.Text;
-            Session["contact"] = txtContact.Text;
-            Session["address"] = txtAddress.Text;
+            con.Open();
+            int pin = Convert.ToInt32(txtPin.Text);
+            string query = "select * from Pincode where Pincode='" + pin + "'";
+            SqlCommand com = new SqlCommand(query, con);
+            SqlDataReader dr = com.ExecuteReader();
+            if(dr.Read())
+            {
+                Session["email"] = txtEmail.Text;
+                Session["contact"] = txtContact.Text;
+                Session["address"] = txtAddress.Text;
+                Label1.Visible = true;
+                Label1.Text = "Available!";
+            }
+            else
+            {
+                Label1.Visible = true;
+                Label1.Text = "Not Available!";
+            }
         }
     }
 }

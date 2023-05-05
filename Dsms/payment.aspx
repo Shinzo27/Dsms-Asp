@@ -71,6 +71,8 @@
         <p>We received your purchase request;<br /> You will receive your order by </p><br>
         <asp:Label ID="Label1" runat="server" Font-Size="Large"></asp:Label>
         <br />
-        <button type="button" class="btn btn-primary"><a href="product.aspx" style="color:white; font-size:medium;">Continue Shopping</a></button>
+        <br />
+        <asp:Button ID="Button1" runat="server" Text="Continue Shopping" BackColor="#83A948" CssClass="btn btn-primary" Font-Size="Medium" ForeColor="White" OnClick="Button1_Click" /><br />
+         <br /><asp:Button ID="Button2" runat="server" Text="Get Invoice" BackColor="red" CssClass="btn btn-primary" Font-Size="Medium" ForeColor="White" OnClick="Button2_Click" />
     </div>
 </asp:Content>

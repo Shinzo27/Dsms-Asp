@@ -7,14 +7,14 @@
         <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False" CellPadding="4" DataKeyNames="cid" ForeColor="#333333" GridLines="None" Height="342px" Width="913px"  ShowFooter="True" DataSourceID="SqlDataSource1" EmptyDataText="Your Cart Is Empty" ShowHeaderWhenEmpty="True">
             <AlternatingRowStyle BackColor="White" />
             <Columns>
-                <asp:CommandField ButtonType="Button" ShowDeleteButton="True" ShowEditButton="True" HeaderText="Action">
-                <ControlStyle BackColor="#507CD1" Font-Size="Large" ForeColor="White" CssClass="btn" />
-                </asp:CommandField>
                 <asp:BoundField DataField="pname" HeaderText="Product" SortExpression="pname" />
                 <asp:BoundField DataField="price" HeaderText="Price" SortExpression="price" />
                 <asp:BoundField DataField="quantity" HeaderText="Quantity" SortExpression="quantity" />
                 <asp:BoundField DataField="ptype" HeaderText="Packing" SortExpression="ptype" />
                 <asp:BoundField DataField="total" HeaderText="Total" SortExpression="total" />
+                <asp:CommandField ButtonType="Button" ShowDeleteButton="True" HeaderText="Action">
+                <ControlStyle BackColor="#CC0000" Font-Size="Large" ForeColor="White" CssClass="btn" />
+                </asp:CommandField>
             </Columns>
             <EditRowStyle BackColor="#2461BF" />
             <EmptyDataRowStyle Font-Size="Large" HorizontalAlign="Center" VerticalAlign="Middle" />

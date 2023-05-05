@@ -6,6 +6,10 @@ using System.Web.UI;
 using System.Web.UI.WebControls;
 using System.Data.SqlClient;
 using System.Configuration;
+using Dsms.report;
+using Microsoft.Reporting.WebForms;
+using System.Net.Mail;
+using System.Net;
 
 namespace Dsms
 {
@@ -15,7 +19,6 @@ namespace Dsms
         SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["dbconnection"].ConnectionString);
         protected void Page_Load(object sender, EventArgs e)
         {
-            int uid = Convert.ToInt32(Session["uid"].ToString());
             Response.Cache.SetExpires(DateTime.UtcNow.AddDays(-1));
             Response.Cache.SetCacheability(HttpCacheability.NoCache);
             Response.Cache.SetNoStore();
@@ -23,6 +26,12 @@ namespace Dsms
             Response.ClearHeaders();
             Response.AddHeader("Cache-Control", "no-cache, no-store, max-age=0, must-revalidate");
             Response.AddHeader("Pragma", "no-cache");
+            if (Session["loggedin"] == "")
+            {
+                Response.Redirect("login.aspx");
+            }
+            int uid = Convert.ToInt32(Session["uid"].ToString());
+            
             if (Session["email"] != null)
             {
                 con.Open();
@@ -51,10 +60,74 @@ namespace Dsms
                         string query1 = "insert into tblOrderProduct(oid,pname,price,quantity,total,date,ptype) values ('" + id + "','" + gr.Cells[0].Text + "','" + gr.Cells[1].Text + "','" + gr.Cells[2].Text + "','" + gr.Cells[3].Text + "','" + gr.Cells[5].Text + "','" + gr.Cells[4].Text + "')";
                         SqlCommand cmd1 = new SqlCommand(query1, con);
                         cmd1.ExecuteNonQuery();
+
+                        string pname = gr.Cells[0].Text;
+                        int quantity = Convert.ToInt32(gr.Cells[2].Text);
+                        string ptype = gr.Cells[4].Text;
+                        double kg = 0;
+                        if (ptype == "250gm")
+                        {
+                            kg = quantity * 0.25;
+                        }
+                        else if (ptype == "500gm")
+                        {
+                            kg = quantity * 0.5;
+                        }
+                        else if (ptype == "1kg")
+                        {
+                            kg = quantity * 1;
+                        }
+                        else
+                        {
+                            kg = quantity;
+                        }
+                        string stk = "update tblStock set stock=stock-'" + kg + "' where pname='" + pname + "'";
+                        SqlCommand stkcmd = new SqlCommand(stk, con);
+                        stkcmd.ExecuteNonQuery();
                     }
+                    //tocustomer
+                    String to = Session["email"].ToString();
+                    String un = Session["username"].ToString();
+                    String body = "Hello " + un + "! Your Order is Placed to patel's dryfruit and masala.<br><br>Your order will be delivered by " + DateTime.Now.AddDays(2).ToShortDateString() + "<br><br>Thank You For Interacting With Patel's Dryfruits And Masala!!<br><br> Have A Good Day!";
+                    MailMessage m = new MailMessage("pateldryfruit27@gmail.com", to);
+                    m.Body = body;
+                    m.IsBodyHtml = true;
+                    m.Subject = "Order Confirmation!";
+                    m.Priority = MailPriority.High;
+                    SmtpClient SMTP1 = new SmtpClient("smtp.gmail.com", 587);
+                    SMTP1.DeliveryMethod = SmtpDeliveryMethod.Network;
+                    SMTP1.UseDefaultCredentials = false;
+                    SMTP1.Credentials = new NetworkCredential()
+                    {
+                        UserName = "pateldryfruit27@gmail.com",
+                        Password = "bibsroqiopajinnm"
+                    };
+                    SMTP1.EnableSsl = true;
+                    SMTP1.Send(m);
+
+                    //toadmin
+                    String toEmail = "20bmiit031@gmail.com";
+                    String username = "Admin";
+                    String emailbody = "Hello " + username + "! New Order is Placed to patel's dryfruit and masala.<br><br>Check it Out Fast! ";
+                    MailMessage mm = new MailMessage("pateldryfruit27@gmail.com", toEmail);
+                    mm.Body = emailbody;
+                    mm.IsBodyHtml = true;
+                    mm.Subject = "New Order!";
+                    mm.Priority = MailPriority.High;
+                    SmtpClient SMTP = new SmtpClient("smtp.gmail.com", 587);
+                    SMTP.DeliveryMethod = SmtpDeliveryMethod.Network;
+                    SMTP.UseDefaultCredentials = false;
+                    SMTP.Credentials = new NetworkCredential()
+                    {
+                        UserName = "pateldryfruit27@gmail.com",
+                        Password = "bibsroqiopajinnm"
+                    };
+                    SMTP.EnableSsl = true;
+                    SMTP.Send(mm);
                     string query2 = "delete from tblCart where uid='" + uid + "'";
                     SqlCommand cmd2 = new SqlCommand(query2,con);
-                    cmd2.ExecuteNonQuery();                    
+                    cmd2.ExecuteNonQuery();
+                    
                 }
             }
             else
@@ -63,6 +136,20 @@ namespace Dsms
             }
 
             Label1.Text = DateTime.Now.AddDays(2).ToShortDateString();
+        }
+
+        protected void Button1_Click(object sender, EventArgs e)
+        {
+            Session["username"] = "";
+            Session["email"] = "";
+            Session["address"] = "";
+            Session["contact"] = "";
+            Response.Redirect("index.aspx");
+        }
+
+        protected void Button2_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("report/PrintInvoice.aspx?id="+ id);
         }
     }
 }

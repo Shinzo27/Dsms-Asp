@@ -49,20 +49,27 @@
           <li>
             <br/>
             <a href="index.aspx" class="nav-link px-3 active">
-              <span class="me-2"><i class="bi bi-speedometer2"></i></span>
+              
               <span>Dashboard</span>
             </a>
             <a href="product.aspx" class="nav-link px-3 active">
-              <span class="me-2"><i class="bi bi-bar-chart-fill"></i></span>
+              
               <span>Product</span>
             </a>
             <a href="sales.aspx" class="nav-link px-3 active">
-              <span class="me-2"><i class="bi bi-chevron-right"></i></span>
+              
               <span>Sales</span>
             </a>
             <a href="admin.aspx" class="nav-link px-3 active">
-              <span class="me-2"><i class="bi-person-fill"></i></span>
+              
               <span>Admin</span>
+            </a>
+              <a href="stock.aspx" class="nav-link px-3 active">
+              
+              <span>Stocks</span>
+            </a>
+            <a href="image.aspx" class="nav-link px-3 active">
+               <span>Images</span>
             </a>
           </li>
           <li class="my-4">
@@ -84,7 +91,9 @@
         <div class="col-md-3 mb-3">
           <div class="card bg-primary text-white h-100">
             <div class="card-body py-5" style="font-size: 20px;">
-              <center>₹ 10,000</center>
+              <center>
+                  <asp:Label ID="lblSale" runat="server" Text="Label"></asp:Label>
+                </center>
             </div>
             <div class="card-footer d-flex">
               Total Sale
@@ -97,7 +106,9 @@
         <div class="col-md-3 mb-3">
           <div class="card bg-warning text-dark h-100">
             <div class="card-body py-5" style="font-size: 20px;">
-              <center>30</center>
+              <center>
+                  <asp:Label ID="lblProduct" runat="server" Text="Label"></asp:Label>
+                </center>
             </div>
             <div class="card-footer d-flex">
               Total Products
@@ -110,7 +121,9 @@
         <div class="col-md-3 mb-3">
           <div class="card bg-success text-white h-100">
             <div class="card-body py-5" style="font-size: 20px;">
-              <center>25</center>
+              <center>
+                  <asp:Label ID="lblUser" runat="server" Text="Label"></asp:Label>
+                </center>
             </div>
             <div class="card-footer d-flex">
               Total Users
@@ -123,7 +136,9 @@
         <div class="col-md-3 mb-3">
           <div class="card bg-danger text-white h-100">
             <div class="card-body py-5" style="font-size: 20px;">
-              <center>5</center>
+              <center>
+                  <asp:Label ID="lblLq" runat="server" Text="Label"></asp:Label>
+                </center>
             </div>
             <div class="card-footer d-flex">
               Low Quantity Products

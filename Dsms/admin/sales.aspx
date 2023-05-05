@@ -54,20 +54,27 @@
                   <li>
                     <br/>
                     <a href="index.aspx" class="nav-link px-3 active">
-                      <span class="me-2"><i class="bi bi-speedometer2"></i></span>
+                      
                       <span>Dashboard</span>
                     </a>
                     <a href="product.aspx" class="nav-link px-3 active">
-                      <span class="me-2"><i class="bi bi-bar-chart-fill"></i></span>
+                      
                       <span>Product</span>
                     </a>
                     <a href="sales.aspx" class="nav-link px-3 active">
-                      <span class="me-2"><i class="bi bi-chevron-right"></i></span>
+                      
                       <span>Sales</span>
                     </a>
                     <a href="admin.aspx" class="nav-link px-3 active">
-                      <span class="me-2"><i class="bi-person-fill"></i></span>
+                      
                       <span>Admin</span>
+                    </a>
+                    <a href="stock.aspx" class="nav-link px-3 active">
+                      
+                      <span>Stocks</span>
+                    </a>
+                      <a href="image.aspx" class="nav-link px-3 active">
+                      <span>Images</span>
                     </a>
                   </li>
                   <li class="my-4">
@@ -95,6 +102,7 @@
                     <asp:BoundField DataField="contact" HeaderText="Contact" SortExpression="contact" />
                     <asp:BoundField DataField="total" HeaderText="Total" SortExpression="total" />
                     <asp:BoundField DataField="date" HeaderText="Date" SortExpression="date" />
+                    <asp:HyperLinkField DataNavigateUrlFields="onum" DataNavigateUrlFormatString="vieworder.aspx?id={0}" HeaderText="View" Text="View" />
                 </Columns>
                 <EditRowStyle BackColor="#2461BF" />
                 <FooterStyle BackColor="#507CD1" Font-Bold="True" ForeColor="White" />

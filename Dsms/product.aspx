@@ -28,7 +28,7 @@
                         </div>
                         <div class="price">₹750/1kg</div>
                     </div>--%>
-                   <asp:DataList ID="DataList1" runat="server" CellPadding="5" DataKeyField="pid" DataSourceID="SqlDataSource1" RepeatDirection="Horizontal" OnItemCommand="DataList1_ItemCommand" OnItemDataBound="DataList1_ItemDataBound">
+                   <asp:DataList ID="DataList1" runat="server" CellPadding="5" DataKeyField="pid" DataSourceID="SqlDataSource1" RepeatDirection="Horizontal" OnItemCommand="DataList1_ItemCommand" OnItemDataBound="DataList1_ItemDataBound" RepeatColumns="3">
                        <ItemTemplate>
                             <div class="box">
                             <div class="info">
@@ -72,7 +72,7 @@
             <div class="swiper-slide slide">
                <h3 class="title">Driedfruits</h3>
                <div class="box-container">
-                   <asp:DataList ID="DataList2" runat="server" DataSourceID="SqlDataSource2" RepeatDirection="Horizontal" OnItemCommand="DataList2_ItemCommand" >
+                   <asp:DataList ID="DataList2" runat="server" DataSourceID="SqlDataSource2" RepeatDirection="Horizontal" OnItemCommand="DataList2_ItemCommand" OnItemDataBound="DataList2_ItemDataBound" RepeatColumns="3" >
                         <ItemTemplate>
                             <div class="box">
                             <div class="info">
@@ -88,7 +88,7 @@
                                 <asp:Label ID="pid" runat="server" Text='<%# Eval("pid") %>' Visible="False"></asp:Label>
                                 <br>
                                 <br>
-                                <asp:Label ID="Label1" runat="server" Text="Out of stock!" Font-Size="Large" Visible="false"></asp:Label>
+                                <asp:Label ID="lblOS2" runat="server" Text="Out of stock!" Font-Size="Large" Visible="False" CssClass="btn"></asp:Label>
                                 <asp:Button ID="btnAddtocart" runat="server" CssClass="btn" Text="Add to cart" Width="143px" Height="35px" />
                                 <br>
 
@@ -117,7 +117,7 @@
             <div class="swiper-slide slide">
                <h3 class="title">Masala</h3>
                <div class="box-container">
-                   <asp:DataList ID="DataList3" runat="server" DataSourceID="SqlDataSource3" RepeatDirection="Horizontal" DataKeyField="pid" OnItemCommand="DataList3_ItemCommand" >
+                   <asp:DataList ID="DataList3" runat="server" DataSourceID="SqlDataSource3" RepeatDirection="Horizontal" DataKeyField="pid" OnItemCommand="DataList3_ItemCommand" OnItemDataBound="DataList3_ItemDataBound" RepeatColumns="3" >
                        <ItemTemplate>
                             <div class="box">
                             <div class="info">
@@ -132,7 +132,7 @@
                                 <asp:Label ID="pid" runat="server" Text='<%# Eval("pid") %>' Visible="False"></asp:Label>
                                 <br>
                                 <br>
-                                <asp:Label ID="Label1" runat="server" Text="Out of stock!" Font-Size="Large" Visible="false"></asp:Label>
+                                <asp:Label ID="lblOS3" runat="server" Text="Out of stock!" Font-Size="Large" Visible="false" CssClass="btn"></asp:Label>
                                 <asp:Button ID="btnAddtocart" runat="server" CssClass="btn" Text="Add to cart" Width="143px" Height="35px" />
                                 <br>
 
@@ -160,7 +160,7 @@
             <div class="swiper-slide slide">
                <h3 class="title">Namkeen</h3>
                <div class="box-container">
-                   <asp:DataList ID="DataList4" runat="server" DataSourceID="SqlDataSource4" RepeatDirection="Horizontal" DataKeyField="pid" OnItemCommand="DataList4_ItemCommand" >
+                   <asp:DataList ID="DataList4" runat="server" DataSourceID="SqlDataSource4" RepeatDirection="Horizontal" DataKeyField="pid" OnItemCommand="DataList4_ItemCommand" OnItemDataBound="DataList4_ItemDataBound" RepeatColumns="3" >
                        <ItemTemplate>
                             <div class="box">
                             <div class="info">
@@ -175,7 +175,7 @@
                                 <asp:Label ID="pid" runat="server" Text='<%# Eval("pid") %>' Visible="False"></asp:Label>
                                 <br>
                                 <br>
-                                <asp:Label ID="Label1" runat="server" Text="Out of stock!" Font-Size="Large" Visible="false"></asp:Label>
+                                <asp:Label ID="lblOS4" runat="server" Text="Out of stock!" Font-Size="Large" Visible="false" CssClass="btn"></asp:Label>
                                 <asp:Button ID="btnAddtocart" runat="server" CssClass="btn" Text="Add to cart" Width="143px" Height="35px" />
                                 <br>
 
@@ -203,7 +203,7 @@
             <div class="swiper-slide slide">
                <h3 class="title">Cold Drink</h3>
                <div class="box-container">
-                   <asp:DataList ID="DataList5" runat="server" DataSourceID="SqlDataSource5" RepeatDirection="Horizontal" DataKeyField="pid" OnItemCommand="DataList5_ItemCommand" >
+                   <asp:DataList ID="DataList5" runat="server" DataSourceID="SqlDataSource5" RepeatDirection="Horizontal" DataKeyField="pid" OnItemCommand="DataList5_ItemCommand" OnItemDataBound="DataList5_ItemDataBound" RepeatColumns="3" >
                        <ItemTemplate>
                             <div class="box">
                             <div class="info">
@@ -218,7 +218,7 @@
                                 <asp:Label ID="pid" runat="server" Text='<%# Eval("pid") %>' Visible="False"></asp:Label>
                                 <br>
                                 <br>
-                                <asp:Label ID="Label1" runat="server" Text="Out of stock!" Font-Size="Large" Visible="false"></asp:Label>
+                                <asp:Label ID="lblOS5" runat="server" Text="Out of stock!" Font-Size="Large" Visible="false" CssClass="btn"></asp:Label>
                                 <asp:Button ID="btnAddtocart" runat="server" CssClass="btn" Text="Add to cart" Width="143px" Height="35px" />
                                 <br>
 
